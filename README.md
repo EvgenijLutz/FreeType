@@ -11,6 +11,12 @@ Add the following dependency to your Package.swift:
 .package(url: "https://github.com/EvgenijLutz/FreeTypeFramework.git", from: "1.0.0")
 ```
 
+You will likely need to link the following libraries in your Xcode project (already included in Xcode):
+```Plain
+libz.tbd
+libbz2.1.0.tbd
+```
+
 And you're good to go!
 
 
