@@ -17,21 +17,24 @@ let package = Package(
             name: "FreeTypeFramework",
             targets: ["FreeTypeFramework"]
         ),
-        // Probably will be deleted in the future
         .library(
-            name: "FreeTypeFrameworkTarget",
-            targets: ["libfreetype"]
+            name: "FreeTypeC",
+            targets: ["FreeTypeC"]
+        ),
+        .library(
+            name: "FreeType",
+            targets: ["FreeType"]
         ),
     ],
     targets: [
         .binaryTarget(
-            name: "libfreetype",
-            path: "libfreetype.xcframework"
+            name: "FreeType",
+            path: "FreeType.xcframework"
         ),
         .target(
-            name: "FreeTypeWrapper",
+            name: "FreeTypeC",
             dependencies: [
-                .target(name: "libfreetype")
+                .target(name: "FreeType")
             ],
             swiftSettings: [
                 .interoperabilityMode(.C)
@@ -40,7 +43,7 @@ let package = Package(
         .target(
             name: "FreeTypeFramework",
             dependencies: [
-                .target(name: "FreeTypeWrapper")
+                .target(name: "FreeTypeC")
             ],
             swiftSettings: [
                 .interoperabilityMode(.C)

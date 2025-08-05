@@ -35,7 +35,13 @@ or in C:
 And you're good to go!
 
 
+# TODO
+- Compile with meson
+- Include support for [libpng](https://github.com/pnggroup/libpng)
+
+
 # The journey of compiling FreeType
+These steps were valid only for FreeTypeFramework 1.0.0 release. The build process has been changed and will be updated here soon. For now, here is the old method of building the framework.
 Currently used version 2.13.3 and Xcode 16.4
 ```bash
 git clone https://gitlab.freedesktop.org/freetype/freetype.git

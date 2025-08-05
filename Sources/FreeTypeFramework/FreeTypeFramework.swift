@@ -6,7 +6,7 @@
 //
 
 import Foundation
-@_exported import FreeTypeWrapper
+@_exported import FreeTypeC
 
 //public struct FTTestStruct {
 //    public let text: String
