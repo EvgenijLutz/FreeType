@@ -72,9 +72,11 @@ build_library() {
   cp libfreetype.h build/$ft_target/include/freetype2/libfreetype.h
   exit_if_error
 
+  # The module.modulemap seems useless, ignore it at the moment
   # Copy the module map into the directory with installed header files
-  cp module.modulemap build/$ft_target/include/freetype2/module.modulemap
-  exit_if_error
+  #mkdir -p build/$ft_target/include/Modules
+  #cp module.modulemap build/$ft_target/include/Modules/module.modulemap
+  #exit_if_error
 
  # Strip installed library
  strip -S build/$ft_target/lib/libfreetype.a >> build/log.txt

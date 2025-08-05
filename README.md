@@ -36,7 +36,7 @@ And you're good to go!
 
 
 # TODO
-- Compile with meson
+- Build with meson
 - Include support for [libpng](https://github.com/pnggroup/libpng)
 
 
