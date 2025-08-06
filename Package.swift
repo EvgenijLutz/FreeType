@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "FreeTypeFramework",
     platforms: [
-        .macOS(.v11),
+        .macOS(.v10_13),
         .iOS(.v12),
         .tvOS(.v12),
         .visionOS(.v1),
@@ -26,6 +26,9 @@ let package = Package(
             targets: ["FreeType"]
         ),
     ],
+    dependencies: [
+        .package(url: "https://github.com/EvgenijLutz/LibPNGFramework.git", exact: "1.6.50-alpha1")
+    ],
     targets: [
         .binaryTarget(
             name: "FreeType",
@@ -34,6 +37,7 @@ let package = Package(
         .target(
             name: "FreeTypeC",
             dependencies: [
+                .product(name: "LibPNGC", package: "LibPNGFramework"),
                 .target(name: "FreeType")
             ],
             swiftSettings: [
