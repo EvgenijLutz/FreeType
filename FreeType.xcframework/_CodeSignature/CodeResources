@@ -4,9 +4,13 @@
 <dict>
 	<key>files</key>
 	<dict>
+		<key>ios-arm64/Headers/FreeType-Module/module.modulemap</key>
+		<data>
+		YMZouuo9JCcXeQVzpbZuamntoDw=
+		</data>
 		<key>ios-arm64/Headers/freetype/config/ftconfig.h</key>
 		<data>
-		2zyX1YLF2U9OmvTilxM0a60whA8=
+		i+iAH93/FNAazCSj5ZcCLqJMHNs=
 		</data>
 		<key>ios-arm64/Headers/freetype/config/ftheader.h</key>
 		<data>
@@ -18,7 +22,7 @@
 		</data>
 		<key>ios-arm64/Headers/freetype/config/ftoption.h</key>
 		<data>
-		tvq/NMhm5PG6Iq1/4LLlLaaLi2M=
+		9tQs6SSHS+Qx22MEcPu8QhbyQK8=
 		</data>
 		<key>ios-arm64/Headers/freetype/config/ftstdlib.h</key>
 		<data>
@@ -124,10 +128,6 @@
 		<data>
 		/tVc58MsvAaR18mjCaD9VSRrueQ=
 		</data>
-		<key>ios-arm64/Headers/freetype/ftlogging.h</key>
-		<data>
-		1dkAAmwBH8HiEaeAFyZ4Axx2Ycw=
-		</data>
 		<key>ios-arm64/Headers/freetype/ftlzw.h</key>
 		<data>
 		FT4oTIng8aHUwRUFPup/8qL2IbA=
@@ -230,11 +230,15 @@
 		</data>
 		<key>ios-arm64/libfreetype.a</key>
 		<data>
-		C7eYX+Ktbg3s/BCYUmiBTfBGJi4=
+		eDPSVjFbmrdHBwWaSJnh15zprac=
+		</data>
+		<key>ios-arm64_x86_64-simulator/Headers/FreeType-Module/module.modulemap</key>
+		<data>
+		YMZouuo9JCcXeQVzpbZuamntoDw=
 		</data>
 		<key>ios-arm64_x86_64-simulator/Headers/freetype/config/ftconfig.h</key>
 		<data>
-		2zyX1YLF2U9OmvTilxM0a60whA8=
+		i+iAH93/FNAazCSj5ZcCLqJMHNs=
 		</data>
 		<key>ios-arm64_x86_64-simulator/Headers/freetype/config/ftheader.h</key>
 		<data>
@@ -246,7 +250,7 @@
 		</data>
 		<key>ios-arm64_x86_64-simulator/Headers/freetype/config/ftoption.h</key>
 		<data>
-		tvq/NMhm5PG6Iq1/4LLlLaaLi2M=
+		9tQs6SSHS+Qx22MEcPu8QhbyQK8=
 		</data>
 		<key>ios-arm64_x86_64-simulator/Headers/freetype/config/ftstdlib.h</key>
 		<data>
@@ -352,10 +356,6 @@
 		<data>
 		/tVc58MsvAaR18mjCaD9VSRrueQ=
 		</data>
-		<key>ios-arm64_x86_64-simulator/Headers/freetype/ftlogging.h</key>
-		<data>
-		1dkAAmwBH8HiEaeAFyZ4Axx2Ycw=
-		</data>
 		<key>ios-arm64_x86_64-simulator/Headers/freetype/ftlzw.h</key>
 		<data>
 		FT4oTIng8aHUwRUFPup/8qL2IbA=
@@ -458,11 +458,15 @@
 		</data>
 		<key>ios-arm64_x86_64-simulator/libfreetype.a</key>
 		<data>
-		nPC6Yup3x9ztGioGBUCsNvOlOjk=
+		8LmKcwxu7k5cEbrByIGQofrXYXI=
+		</data>
+		<key>macos-arm64_x86_64/Headers/FreeType-Module/module.modulemap</key>
+		<data>
+		YMZouuo9JCcXeQVzpbZuamntoDw=
 		</data>
 		<key>macos-arm64_x86_64/Headers/freetype/config/ftconfig.h</key>
 		<data>
-		2zyX1YLF2U9OmvTilxM0a60whA8=
+		i+iAH93/FNAazCSj5ZcCLqJMHNs=
 		</data>
 		<key>macos-arm64_x86_64/Headers/freetype/config/ftheader.h</key>
 		<data>
@@ -474,7 +478,7 @@
 		</data>
 		<key>macos-arm64_x86_64/Headers/freetype/config/ftoption.h</key>
 		<data>
-		tvq/NMhm5PG6Iq1/4LLlLaaLi2M=
+		9tQs6SSHS+Qx22MEcPu8QhbyQK8=
 		</data>
 		<key>macos-arm64_x86_64/Headers/freetype/config/ftstdlib.h</key>
 		<data>
@@ -580,10 +584,6 @@
 		<data>
 		/tVc58MsvAaR18mjCaD9VSRrueQ=
 		</data>
-		<key>macos-arm64_x86_64/Headers/freetype/ftlogging.h</key>
-		<data>
-		1dkAAmwBH8HiEaeAFyZ4Axx2Ycw=
-		</data>
 		<key>macos-arm64_x86_64/Headers/freetype/ftlzw.h</key>
 		<data>
 		FT4oTIng8aHUwRUFPup/8qL2IbA=
@@ -686,11 +686,15 @@
 		</data>
 		<key>macos-arm64_x86_64/libfreetype.a</key>
 		<data>
-		tXPxHgzNzqQafVas7xr+hsr2h/s=
+		h/Zz35UXLXdHHQJ7WdSj1z40WLc=
+		</data>
+		<key>tvos-arm64/Headers/FreeType-Module/module.modulemap</key>
+		<data>
+		YMZouuo9JCcXeQVzpbZuamntoDw=
 		</data>
 		<key>tvos-arm64/Headers/freetype/config/ftconfig.h</key>
 		<data>
-		2zyX1YLF2U9OmvTilxM0a60whA8=
+		i+iAH93/FNAazCSj5ZcCLqJMHNs=
 		</data>
 		<key>tvos-arm64/Headers/freetype/config/ftheader.h</key>
 		<data>
@@ -702,7 +706,7 @@
 		</data>
 		<key>tvos-arm64/Headers/freetype/config/ftoption.h</key>
 		<data>
-		tvq/NMhm5PG6Iq1/4LLlLaaLi2M=
+		9tQs6SSHS+Qx22MEcPu8QhbyQK8=
 		</data>
 		<key>tvos-arm64/Headers/freetype/config/ftstdlib.h</key>
 		<data>
@@ -808,10 +812,6 @@
 		<data>
 		/tVc58MsvAaR18mjCaD9VSRrueQ=
 		</data>
-		<key>tvos-arm64/Headers/freetype/ftlogging.h</key>
-		<data>
-		1dkAAmwBH8HiEaeAFyZ4Axx2Ycw=
-		</data>
 		<key>tvos-arm64/Headers/freetype/ftlzw.h</key>
 		<data>
 		FT4oTIng8aHUwRUFPup/8qL2IbA=
@@ -914,11 +914,15 @@
 		</data>
 		<key>tvos-arm64/libfreetype.a</key>
 		<data>
-		XN/fT1dzdFZXez9nw3vbrgsZYnw=
+		vgmrQZFX+sQNGzX1SrdhWlT9rUU=
+		</data>
+		<key>tvos-arm64_x86_64-simulator/Headers/FreeType-Module/module.modulemap</key>
+		<data>
+		YMZouuo9JCcXeQVzpbZuamntoDw=
 		</data>
 		<key>tvos-arm64_x86_64-simulator/Headers/freetype/config/ftconfig.h</key>
 		<data>
-		2zyX1YLF2U9OmvTilxM0a60whA8=
+		i+iAH93/FNAazCSj5ZcCLqJMHNs=
 		</data>
 		<key>tvos-arm64_x86_64-simulator/Headers/freetype/config/ftheader.h</key>
 		<data>
@@ -930,7 +934,7 @@
 		</data>
 		<key>tvos-arm64_x86_64-simulator/Headers/freetype/config/ftoption.h</key>
 		<data>
-		tvq/NMhm5PG6Iq1/4LLlLaaLi2M=
+		9tQs6SSHS+Qx22MEcPu8QhbyQK8=
 		</data>
 		<key>tvos-arm64_x86_64-simulator/Headers/freetype/config/ftstdlib.h</key>
 		<data>
@@ -1036,10 +1040,6 @@
 		<data>
 		/tVc58MsvAaR18mjCaD9VSRrueQ=
 		</data>
-		<key>tvos-arm64_x86_64-simulator/Headers/freetype/ftlogging.h</key>
-		<data>
-		1dkAAmwBH8HiEaeAFyZ4Axx2Ycw=
-		</data>
 		<key>tvos-arm64_x86_64-simulator/Headers/freetype/ftlzw.h</key>
 		<data>
 		FT4oTIng8aHUwRUFPup/8qL2IbA=
@@ -1142,11 +1142,15 @@
 		</data>
 		<key>tvos-arm64_x86_64-simulator/libfreetype.a</key>
 		<data>
-		Qu1e9Nciz1z56QJCUBPKV2+BrAo=
+		3jPvBjfMum5azk19btrHhGZA74k=
+		</data>
+		<key>watchos-arm64/Headers/FreeType-Module/module.modulemap</key>
+		<data>
+		YMZouuo9JCcXeQVzpbZuamntoDw=
 		</data>
 		<key>watchos-arm64/Headers/freetype/config/ftconfig.h</key>
 		<data>
-		2zyX1YLF2U9OmvTilxM0a60whA8=
+		i+iAH93/FNAazCSj5ZcCLqJMHNs=
 		</data>
 		<key>watchos-arm64/Headers/freetype/config/ftheader.h</key>
 		<data>
@@ -1158,7 +1162,7 @@
 		</data>
 		<key>watchos-arm64/Headers/freetype/config/ftoption.h</key>
 		<data>
-		tvq/NMhm5PG6Iq1/4LLlLaaLi2M=
+		9tQs6SSHS+Qx22MEcPu8QhbyQK8=
 		</data>
 		<key>watchos-arm64/Headers/freetype/config/ftstdlib.h</key>
 		<data>
@@ -1264,10 +1268,6 @@
 		<data>
 		/tVc58MsvAaR18mjCaD9VSRrueQ=
 		</data>
-		<key>watchos-arm64/Headers/freetype/ftlogging.h</key>
-		<data>
-		1dkAAmwBH8HiEaeAFyZ4Axx2Ycw=
-		</data>
 		<key>watchos-arm64/Headers/freetype/ftlzw.h</key>
 		<data>
 		FT4oTIng8aHUwRUFPup/8qL2IbA=
@@ -1370,11 +1370,15 @@
 		</data>
 		<key>watchos-arm64/libfreetype.a</key>
 		<data>
-		wfiAuYylCn4YEio8VvDYOzBNFtg=
+		nur3THcO6h+4KQOFpIBLIfgamNU=
+		</data>
+		<key>watchos-arm64_x86_64-simulator/Headers/FreeType-Module/module.modulemap</key>
+		<data>
+		YMZouuo9JCcXeQVzpbZuamntoDw=
 		</data>
 		<key>watchos-arm64_x86_64-simulator/Headers/freetype/config/ftconfig.h</key>
 		<data>
-		2zyX1YLF2U9OmvTilxM0a60whA8=
+		i+iAH93/FNAazCSj5ZcCLqJMHNs=
 		</data>
 		<key>watchos-arm64_x86_64-simulator/Headers/freetype/config/ftheader.h</key>
 		<data>
@@ -1386,7 +1390,7 @@
 		</data>
 		<key>watchos-arm64_x86_64-simulator/Headers/freetype/config/ftoption.h</key>
 		<data>
-		tvq/NMhm5PG6Iq1/4LLlLaaLi2M=
+		9tQs6SSHS+Qx22MEcPu8QhbyQK8=
 		</data>
 		<key>watchos-arm64_x86_64-simulator/Headers/freetype/config/ftstdlib.h</key>
 		<data>
@@ -1492,10 +1496,6 @@
 		<data>
 		/tVc58MsvAaR18mjCaD9VSRrueQ=
 		</data>
-		<key>watchos-arm64_x86_64-simulator/Headers/freetype/ftlogging.h</key>
-		<data>
-		1dkAAmwBH8HiEaeAFyZ4Axx2Ycw=
-		</data>
 		<key>watchos-arm64_x86_64-simulator/Headers/freetype/ftlzw.h</key>
 		<data>
 		FT4oTIng8aHUwRUFPup/8qL2IbA=
@@ -1598,11 +1598,15 @@
 		</data>
 		<key>watchos-arm64_x86_64-simulator/libfreetype.a</key>
 		<data>
-		Iif/knE5PX9zXcqEx9jrMow+++A=
+		LxqcE7RlJ5DJUo+gOeHij09s3zM=
+		</data>
+		<key>xros-arm64/Headers/FreeType-Module/module.modulemap</key>
+		<data>
+		YMZouuo9JCcXeQVzpbZuamntoDw=
 		</data>
 		<key>xros-arm64/Headers/freetype/config/ftconfig.h</key>
 		<data>
-		2zyX1YLF2U9OmvTilxM0a60whA8=
+		i+iAH93/FNAazCSj5ZcCLqJMHNs=
 		</data>
 		<key>xros-arm64/Headers/freetype/config/ftheader.h</key>
 		<data>
@@ -1614,7 +1618,7 @@
 		</data>
 		<key>xros-arm64/Headers/freetype/config/ftoption.h</key>
 		<data>
-		tvq/NMhm5PG6Iq1/4LLlLaaLi2M=
+		9tQs6SSHS+Qx22MEcPu8QhbyQK8=
 		</data>
 		<key>xros-arm64/Headers/freetype/config/ftstdlib.h</key>
 		<data>
@@ -1720,10 +1724,6 @@
 		<data>
 		/tVc58MsvAaR18mjCaD9VSRrueQ=
 		</data>
-		<key>xros-arm64/Headers/freetype/ftlogging.h</key>
-		<data>
-		1dkAAmwBH8HiEaeAFyZ4Axx2Ycw=
-		</data>
 		<key>xros-arm64/Headers/freetype/ftlzw.h</key>
 		<data>
 		FT4oTIng8aHUwRUFPup/8qL2IbA=
@@ -1826,11 +1826,15 @@
 		</data>
 		<key>xros-arm64/libfreetype.a</key>
 		<data>
-		ux3x0yZY2oPZtCtCF1hECGw3g3M=
+		ejd/E0htqSLW+VFniaKPH6ATSCE=
+		</data>
+		<key>xros-arm64_x86_64-simulator/Headers/FreeType-Module/module.modulemap</key>
+		<data>
+		YMZouuo9JCcXeQVzpbZuamntoDw=
 		</data>
 		<key>xros-arm64_x86_64-simulator/Headers/freetype/config/ftconfig.h</key>
 		<data>
-		2zyX1YLF2U9OmvTilxM0a60whA8=
+		i+iAH93/FNAazCSj5ZcCLqJMHNs=
 		</data>
 		<key>xros-arm64_x86_64-simulator/Headers/freetype/config/ftheader.h</key>
 		<data>
@@ -1842,7 +1846,7 @@
 		</data>
 		<key>xros-arm64_x86_64-simulator/Headers/freetype/config/ftoption.h</key>
 		<data>
-		tvq/NMhm5PG6Iq1/4LLlLaaLi2M=
+		9tQs6SSHS+Qx22MEcPu8QhbyQK8=
 		</data>
 		<key>xros-arm64_x86_64-simulator/Headers/freetype/config/ftstdlib.h</key>
 		<data>
@@ -1948,10 +1952,6 @@
 		<data>
 		/tVc58MsvAaR18mjCaD9VSRrueQ=
 		</data>
-		<key>xros-arm64_x86_64-simulator/Headers/freetype/ftlogging.h</key>
-		<data>
-		1dkAAmwBH8HiEaeAFyZ4Axx2Ycw=
-		</data>
 		<key>xros-arm64_x86_64-simulator/Headers/freetype/ftlzw.h</key>
 		<data>
 		FT4oTIng8aHUwRUFPup/8qL2IbA=
@@ -2054,20 +2054,31 @@
 		</data>
 		<key>xros-arm64_x86_64-simulator/libfreetype.a</key>
 		<data>
-		k3CM3iKNVf7aTcq+2xCX4Bm3vyU=
+		7bD/OgNPlOfdaeRWx0xshIoblmI=
 		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
+		<key>ios-arm64/Headers/FreeType-Module/module.modulemap</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			YMZouuo9JCcXeQVzpbZuamntoDw=
+			</data>
+			<key>hash2</key>
+			<data>
+			wKWUO1ezXwczd/D1rofEY/5oolbYiH9WiMMrXZPjJEc=
+			</data>
+		</dict>
 		<key>ios-arm64/Headers/freetype/config/ftconfig.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			2zyX1YLF2U9OmvTilxM0a60whA8=
+			i+iAH93/FNAazCSj5ZcCLqJMHNs=
 			</data>
 			<key>hash2</key>
 			<data>
-			rKTs5YMHW8v2ums04RMHmJ2+XZQ947P5iQmOhDZEoYM=
+			fK8SA2FjplXd7YLWNSD06eMUXhxPro7oZwLmYysw1qQ=
 			</data>
 		</dict>
 		<key>ios-arm64/Headers/freetype/config/ftheader.h</key>
@@ -2096,11 +2107,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			tvq/NMhm5PG6Iq1/4LLlLaaLi2M=
+			9tQs6SSHS+Qx22MEcPu8QhbyQK8=
 			</data>
 			<key>hash2</key>
 			<data>
-			HD2cKN3yXPbmr9d8861KBooA3rWhjNSFaCVS0zS/mCw=
+			TSTYz20e2zkZb3qJd0vr69be0+bezQl4/cwMZWFDL98=
 			</data>
 		</dict>
 		<key>ios-arm64/Headers/freetype/config/ftstdlib.h</key>
@@ -2389,17 +2400,6 @@
 			R9golPLD4Ye4ZZ0ZZv26RDSMFzmoh1GlpCpal8eiCc4=
 			</data>
 		</dict>
-		<key>ios-arm64/Headers/freetype/ftlogging.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			1dkAAmwBH8HiEaeAFyZ4Axx2Ycw=
-			</data>
-			<key>hash2</key>
-			<data>
-			rfyx9sb/c7a/7XB8dNfCLirqdSjecoWI6wUbTssY8nk=
-			</data>
-		</dict>
 		<key>ios-arm64/Headers/freetype/ftlzw.h</key>
 		<dict>
 			<key>hash</key>
@@ -2679,22 +2679,33 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			C7eYX+Ktbg3s/BCYUmiBTfBGJi4=
+			eDPSVjFbmrdHBwWaSJnh15zprac=
 			</data>
 			<key>hash2</key>
 			<data>
-			P7Io3AznS+BMtp8TtEVqPGGE4RFXRdeKZjPoTPnIAxI=
+			ER0e4w3M+amiqMIxEN0NFnf48d0OKL0SxZuAJmltdG4=
+			</data>
+		</dict>
+		<key>ios-arm64_x86_64-simulator/Headers/FreeType-Module/module.modulemap</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			YMZouuo9JCcXeQVzpbZuamntoDw=
+			</data>
+			<key>hash2</key>
+			<data>
+			wKWUO1ezXwczd/D1rofEY/5oolbYiH9WiMMrXZPjJEc=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/Headers/freetype/config/ftconfig.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			2zyX1YLF2U9OmvTilxM0a60whA8=
+			i+iAH93/FNAazCSj5ZcCLqJMHNs=
 			</data>
 			<key>hash2</key>
 			<data>
-			rKTs5YMHW8v2ums04RMHmJ2+XZQ947P5iQmOhDZEoYM=
+			fK8SA2FjplXd7YLWNSD06eMUXhxPro7oZwLmYysw1qQ=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/Headers/freetype/config/ftheader.h</key>
@@ -2723,11 +2734,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			tvq/NMhm5PG6Iq1/4LLlLaaLi2M=
+			9tQs6SSHS+Qx22MEcPu8QhbyQK8=
 			</data>
 			<key>hash2</key>
 			<data>
-			HD2cKN3yXPbmr9d8861KBooA3rWhjNSFaCVS0zS/mCw=
+			TSTYz20e2zkZb3qJd0vr69be0+bezQl4/cwMZWFDL98=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/Headers/freetype/config/ftstdlib.h</key>
@@ -3016,17 +3027,6 @@
 			R9golPLD4Ye4ZZ0ZZv26RDSMFzmoh1GlpCpal8eiCc4=
 			</data>
 		</dict>
-		<key>ios-arm64_x86_64-simulator/Headers/freetype/ftlogging.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			1dkAAmwBH8HiEaeAFyZ4Axx2Ycw=
-			</data>
-			<key>hash2</key>
-			<data>
-			rfyx9sb/c7a/7XB8dNfCLirqdSjecoWI6wUbTssY8nk=
-			</data>
-		</dict>
 		<key>ios-arm64_x86_64-simulator/Headers/freetype/ftlzw.h</key>
 		<dict>
 			<key>hash</key>
@@ -3306,22 +3306,33 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			nPC6Yup3x9ztGioGBUCsNvOlOjk=
+			8LmKcwxu7k5cEbrByIGQofrXYXI=
 			</data>
 			<key>hash2</key>
 			<data>
-			M4bsQipZXGVvSCcySlSgvcBsVAvStnFvBAHB4uGjFGU=
+			wBYu3xmehXXU0VcQGrWI+Sy1GlUzPlI0PNYb2DjHW2I=
+			</data>
+		</dict>
+		<key>macos-arm64_x86_64/Headers/FreeType-Module/module.modulemap</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			YMZouuo9JCcXeQVzpbZuamntoDw=
+			</data>
+			<key>hash2</key>
+			<data>
+			wKWUO1ezXwczd/D1rofEY/5oolbYiH9WiMMrXZPjJEc=
 			</data>
 		</dict>
 		<key>macos-arm64_x86_64/Headers/freetype/config/ftconfig.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			2zyX1YLF2U9OmvTilxM0a60whA8=
+			i+iAH93/FNAazCSj5ZcCLqJMHNs=
 			</data>
 			<key>hash2</key>
 			<data>
-			rKTs5YMHW8v2ums04RMHmJ2+XZQ947P5iQmOhDZEoYM=
+			fK8SA2FjplXd7YLWNSD06eMUXhxPro7oZwLmYysw1qQ=
 			</data>
 		</dict>
 		<key>macos-arm64_x86_64/Headers/freetype/config/ftheader.h</key>
@@ -3350,11 +3361,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			tvq/NMhm5PG6Iq1/4LLlLaaLi2M=
+			9tQs6SSHS+Qx22MEcPu8QhbyQK8=
 			</data>
 			<key>hash2</key>
 			<data>
-			HD2cKN3yXPbmr9d8861KBooA3rWhjNSFaCVS0zS/mCw=
+			TSTYz20e2zkZb3qJd0vr69be0+bezQl4/cwMZWFDL98=
 			</data>
 		</dict>
 		<key>macos-arm64_x86_64/Headers/freetype/config/ftstdlib.h</key>
@@ -3643,17 +3654,6 @@
 			R9golPLD4Ye4ZZ0ZZv26RDSMFzmoh1GlpCpal8eiCc4=
 			</data>
 		</dict>
-		<key>macos-arm64_x86_64/Headers/freetype/ftlogging.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			1dkAAmwBH8HiEaeAFyZ4Axx2Ycw=
-			</data>
-			<key>hash2</key>
-			<data>
-			rfyx9sb/c7a/7XB8dNfCLirqdSjecoWI6wUbTssY8nk=
-			</data>
-		</dict>
 		<key>macos-arm64_x86_64/Headers/freetype/ftlzw.h</key>
 		<dict>
 			<key>hash</key>
@@ -3933,22 +3933,33 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			tXPxHgzNzqQafVas7xr+hsr2h/s=
+			h/Zz35UXLXdHHQJ7WdSj1z40WLc=
 			</data>
 			<key>hash2</key>
 			<data>
-			4MQgN8VY3szUpA7zuUZTqI1ZQxNk7zjOTDwBpGi0DWM=
+			O6fVPgFSbZYDolHm+EGhaYQIFzTwpcFfOtl1rQd5GNI=
+			</data>
+		</dict>
+		<key>tvos-arm64/Headers/FreeType-Module/module.modulemap</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			YMZouuo9JCcXeQVzpbZuamntoDw=
+			</data>
+			<key>hash2</key>
+			<data>
+			wKWUO1ezXwczd/D1rofEY/5oolbYiH9WiMMrXZPjJEc=
 			</data>
 		</dict>
 		<key>tvos-arm64/Headers/freetype/config/ftconfig.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			2zyX1YLF2U9OmvTilxM0a60whA8=
+			i+iAH93/FNAazCSj5ZcCLqJMHNs=
 			</data>
 			<key>hash2</key>
 			<data>
-			rKTs5YMHW8v2ums04RMHmJ2+XZQ947P5iQmOhDZEoYM=
+			fK8SA2FjplXd7YLWNSD06eMUXhxPro7oZwLmYysw1qQ=
 			</data>
 		</dict>
 		<key>tvos-arm64/Headers/freetype/config/ftheader.h</key>
@@ -3977,11 +3988,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			tvq/NMhm5PG6Iq1/4LLlLaaLi2M=
+			9tQs6SSHS+Qx22MEcPu8QhbyQK8=
 			</data>
 			<key>hash2</key>
 			<data>
-			HD2cKN3yXPbmr9d8861KBooA3rWhjNSFaCVS0zS/mCw=
+			TSTYz20e2zkZb3qJd0vr69be0+bezQl4/cwMZWFDL98=
 			</data>
 		</dict>
 		<key>tvos-arm64/Headers/freetype/config/ftstdlib.h</key>
@@ -4270,17 +4281,6 @@
 			R9golPLD4Ye4ZZ0ZZv26RDSMFzmoh1GlpCpal8eiCc4=
 			</data>
 		</dict>
-		<key>tvos-arm64/Headers/freetype/ftlogging.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			1dkAAmwBH8HiEaeAFyZ4Axx2Ycw=
-			</data>
-			<key>hash2</key>
-			<data>
-			rfyx9sb/c7a/7XB8dNfCLirqdSjecoWI6wUbTssY8nk=
-			</data>
-		</dict>
 		<key>tvos-arm64/Headers/freetype/ftlzw.h</key>
 		<dict>
 			<key>hash</key>
@@ -4560,22 +4560,33 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			XN/fT1dzdFZXez9nw3vbrgsZYnw=
+			vgmrQZFX+sQNGzX1SrdhWlT9rUU=
 			</data>
 			<key>hash2</key>
 			<data>
-			1oYbpPbFuOu1Q0WcOCVZV9z6deNDkiv96oSbSvcje30=
+			JLDZP1MWXFoR8cbRaM0CYNDNBOV/joRHvcDnwdiRl38=
+			</data>
+		</dict>
+		<key>tvos-arm64_x86_64-simulator/Headers/FreeType-Module/module.modulemap</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			YMZouuo9JCcXeQVzpbZuamntoDw=
+			</data>
+			<key>hash2</key>
+			<data>
+			wKWUO1ezXwczd/D1rofEY/5oolbYiH9WiMMrXZPjJEc=
 			</data>
 		</dict>
 		<key>tvos-arm64_x86_64-simulator/Headers/freetype/config/ftconfig.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			2zyX1YLF2U9OmvTilxM0a60whA8=
+			i+iAH93/FNAazCSj5ZcCLqJMHNs=
 			</data>
 			<key>hash2</key>
 			<data>
-			rKTs5YMHW8v2ums04RMHmJ2+XZQ947P5iQmOhDZEoYM=
+			fK8SA2FjplXd7YLWNSD06eMUXhxPro7oZwLmYysw1qQ=
 			</data>
 		</dict>
 		<key>tvos-arm64_x86_64-simulator/Headers/freetype/config/ftheader.h</key>
@@ -4604,11 +4615,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			tvq/NMhm5PG6Iq1/4LLlLaaLi2M=
+			9tQs6SSHS+Qx22MEcPu8QhbyQK8=
 			</data>
 			<key>hash2</key>
 			<data>
-			HD2cKN3yXPbmr9d8861KBooA3rWhjNSFaCVS0zS/mCw=
+			TSTYz20e2zkZb3qJd0vr69be0+bezQl4/cwMZWFDL98=
 			</data>
 		</dict>
 		<key>tvos-arm64_x86_64-simulator/Headers/freetype/config/ftstdlib.h</key>
@@ -4897,17 +4908,6 @@
 			R9golPLD4Ye4ZZ0ZZv26RDSMFzmoh1GlpCpal8eiCc4=
 			</data>
 		</dict>
-		<key>tvos-arm64_x86_64-simulator/Headers/freetype/ftlogging.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			1dkAAmwBH8HiEaeAFyZ4Axx2Ycw=
-			</data>
-			<key>hash2</key>
-			<data>
-			rfyx9sb/c7a/7XB8dNfCLirqdSjecoWI6wUbTssY8nk=
-			</data>
-		</dict>
 		<key>tvos-arm64_x86_64-simulator/Headers/freetype/ftlzw.h</key>
 		<dict>
 			<key>hash</key>
@@ -5187,22 +5187,33 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Qu1e9Nciz1z56QJCUBPKV2+BrAo=
+			3jPvBjfMum5azk19btrHhGZA74k=
 			</data>
 			<key>hash2</key>
 			<data>
-			lkW/L1QE0XHNR1vP8H3j8gSbZLGjRIBDVRhvSj2TBCw=
+			SKvV+qf/avdWtUHxQoHw0wg8kTnOERF62xpMZrHCcxc=
+			</data>
+		</dict>
+		<key>watchos-arm64/Headers/FreeType-Module/module.modulemap</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			YMZouuo9JCcXeQVzpbZuamntoDw=
+			</data>
+			<key>hash2</key>
+			<data>
+			wKWUO1ezXwczd/D1rofEY/5oolbYiH9WiMMrXZPjJEc=
 			</data>
 		</dict>
 		<key>watchos-arm64/Headers/freetype/config/ftconfig.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			2zyX1YLF2U9OmvTilxM0a60whA8=
+			i+iAH93/FNAazCSj5ZcCLqJMHNs=
 			</data>
 			<key>hash2</key>
 			<data>
-			rKTs5YMHW8v2ums04RMHmJ2+XZQ947P5iQmOhDZEoYM=
+			fK8SA2FjplXd7YLWNSD06eMUXhxPro7oZwLmYysw1qQ=
 			</data>
 		</dict>
 		<key>watchos-arm64/Headers/freetype/config/ftheader.h</key>
@@ -5231,11 +5242,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			tvq/NMhm5PG6Iq1/4LLlLaaLi2M=
+			9tQs6SSHS+Qx22MEcPu8QhbyQK8=
 			</data>
 			<key>hash2</key>
 			<data>
-			HD2cKN3yXPbmr9d8861KBooA3rWhjNSFaCVS0zS/mCw=
+			TSTYz20e2zkZb3qJd0vr69be0+bezQl4/cwMZWFDL98=
 			</data>
 		</dict>
 		<key>watchos-arm64/Headers/freetype/config/ftstdlib.h</key>
@@ -5524,17 +5535,6 @@
 			R9golPLD4Ye4ZZ0ZZv26RDSMFzmoh1GlpCpal8eiCc4=
 			</data>
 		</dict>
-		<key>watchos-arm64/Headers/freetype/ftlogging.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			1dkAAmwBH8HiEaeAFyZ4Axx2Ycw=
-			</data>
-			<key>hash2</key>
-			<data>
-			rfyx9sb/c7a/7XB8dNfCLirqdSjecoWI6wUbTssY8nk=
-			</data>
-		</dict>
 		<key>watchos-arm64/Headers/freetype/ftlzw.h</key>
 		<dict>
 			<key>hash</key>
@@ -5814,22 +5814,33 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			wfiAuYylCn4YEio8VvDYOzBNFtg=
+			nur3THcO6h+4KQOFpIBLIfgamNU=
 			</data>
 			<key>hash2</key>
 			<data>
-			EMRh2q+Xj9hyl/Ifee+E/7TYheEDnMjQ0aoNOAA+stY=
+			KczaST0sOfqOJ+LTK5FjuNU6kuJipgzKzHIrX2F8PVY=
+			</data>
+		</dict>
+		<key>watchos-arm64_x86_64-simulator/Headers/FreeType-Module/module.modulemap</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			YMZouuo9JCcXeQVzpbZuamntoDw=
+			</data>
+			<key>hash2</key>
+			<data>
+			wKWUO1ezXwczd/D1rofEY/5oolbYiH9WiMMrXZPjJEc=
 			</data>
 		</dict>
 		<key>watchos-arm64_x86_64-simulator/Headers/freetype/config/ftconfig.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			2zyX1YLF2U9OmvTilxM0a60whA8=
+			i+iAH93/FNAazCSj5ZcCLqJMHNs=
 			</data>
 			<key>hash2</key>
 			<data>
-			rKTs5YMHW8v2ums04RMHmJ2+XZQ947P5iQmOhDZEoYM=
+			fK8SA2FjplXd7YLWNSD06eMUXhxPro7oZwLmYysw1qQ=
 			</data>
 		</dict>
 		<key>watchos-arm64_x86_64-simulator/Headers/freetype/config/ftheader.h</key>
@@ -5858,11 +5869,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			tvq/NMhm5PG6Iq1/4LLlLaaLi2M=
+			9tQs6SSHS+Qx22MEcPu8QhbyQK8=
 			</data>
 			<key>hash2</key>
 			<data>
-			HD2cKN3yXPbmr9d8861KBooA3rWhjNSFaCVS0zS/mCw=
+			TSTYz20e2zkZb3qJd0vr69be0+bezQl4/cwMZWFDL98=
 			</data>
 		</dict>
 		<key>watchos-arm64_x86_64-simulator/Headers/freetype/config/ftstdlib.h</key>
@@ -6151,17 +6162,6 @@
 			R9golPLD4Ye4ZZ0ZZv26RDSMFzmoh1GlpCpal8eiCc4=
 			</data>
 		</dict>
-		<key>watchos-arm64_x86_64-simulator/Headers/freetype/ftlogging.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			1dkAAmwBH8HiEaeAFyZ4Axx2Ycw=
-			</data>
-			<key>hash2</key>
-			<data>
-			rfyx9sb/c7a/7XB8dNfCLirqdSjecoWI6wUbTssY8nk=
-			</data>
-		</dict>
 		<key>watchos-arm64_x86_64-simulator/Headers/freetype/ftlzw.h</key>
 		<dict>
 			<key>hash</key>
@@ -6441,22 +6441,33 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Iif/knE5PX9zXcqEx9jrMow+++A=
+			LxqcE7RlJ5DJUo+gOeHij09s3zM=
 			</data>
 			<key>hash2</key>
 			<data>
-			yspNffj7o+RNOBqfjEaYSli/B1hx7kI63k7FAR/+etw=
+			zuoLLYbBe387CDL6SQkA6uh3TUbPKLaUQZE3WthSMXY=
+			</data>
+		</dict>
+		<key>xros-arm64/Headers/FreeType-Module/module.modulemap</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			YMZouuo9JCcXeQVzpbZuamntoDw=
+			</data>
+			<key>hash2</key>
+			<data>
+			wKWUO1ezXwczd/D1rofEY/5oolbYiH9WiMMrXZPjJEc=
 			</data>
 		</dict>
 		<key>xros-arm64/Headers/freetype/config/ftconfig.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			2zyX1YLF2U9OmvTilxM0a60whA8=
+			i+iAH93/FNAazCSj5ZcCLqJMHNs=
 			</data>
 			<key>hash2</key>
 			<data>
-			rKTs5YMHW8v2ums04RMHmJ2+XZQ947P5iQmOhDZEoYM=
+			fK8SA2FjplXd7YLWNSD06eMUXhxPro7oZwLmYysw1qQ=
 			</data>
 		</dict>
 		<key>xros-arm64/Headers/freetype/config/ftheader.h</key>
@@ -6485,11 +6496,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			tvq/NMhm5PG6Iq1/4LLlLaaLi2M=
+			9tQs6SSHS+Qx22MEcPu8QhbyQK8=
 			</data>
 			<key>hash2</key>
 			<data>
-			HD2cKN3yXPbmr9d8861KBooA3rWhjNSFaCVS0zS/mCw=
+			TSTYz20e2zkZb3qJd0vr69be0+bezQl4/cwMZWFDL98=
 			</data>
 		</dict>
 		<key>xros-arm64/Headers/freetype/config/ftstdlib.h</key>
@@ -6778,17 +6789,6 @@
 			R9golPLD4Ye4ZZ0ZZv26RDSMFzmoh1GlpCpal8eiCc4=
 			</data>
 		</dict>
-		<key>xros-arm64/Headers/freetype/ftlogging.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			1dkAAmwBH8HiEaeAFyZ4Axx2Ycw=
-			</data>
-			<key>hash2</key>
-			<data>
-			rfyx9sb/c7a/7XB8dNfCLirqdSjecoWI6wUbTssY8nk=
-			</data>
-		</dict>
 		<key>xros-arm64/Headers/freetype/ftlzw.h</key>
 		<dict>
 			<key>hash</key>
@@ -7068,22 +7068,33 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			ux3x0yZY2oPZtCtCF1hECGw3g3M=
+			ejd/E0htqSLW+VFniaKPH6ATSCE=
 			</data>
 			<key>hash2</key>
 			<data>
-			Zg1q2RloUYd2FzyULMQVDXoFECYb19fN8m1txiX/wJQ=
+			Jw67ocevDlrcHAR5oQwQaXZm2m173S8Eez6pTZkFxRA=
+			</data>
+		</dict>
+		<key>xros-arm64_x86_64-simulator/Headers/FreeType-Module/module.modulemap</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			YMZouuo9JCcXeQVzpbZuamntoDw=
+			</data>
+			<key>hash2</key>
+			<data>
+			wKWUO1ezXwczd/D1rofEY/5oolbYiH9WiMMrXZPjJEc=
 			</data>
 		</dict>
 		<key>xros-arm64_x86_64-simulator/Headers/freetype/config/ftconfig.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			2zyX1YLF2U9OmvTilxM0a60whA8=
+			i+iAH93/FNAazCSj5ZcCLqJMHNs=
 			</data>
 			<key>hash2</key>
 			<data>
-			rKTs5YMHW8v2ums04RMHmJ2+XZQ947P5iQmOhDZEoYM=
+			fK8SA2FjplXd7YLWNSD06eMUXhxPro7oZwLmYysw1qQ=
 			</data>
 		</dict>
 		<key>xros-arm64_x86_64-simulator/Headers/freetype/config/ftheader.h</key>
@@ -7112,11 +7123,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			tvq/NMhm5PG6Iq1/4LLlLaaLi2M=
+			9tQs6SSHS+Qx22MEcPu8QhbyQK8=
 			</data>
 			<key>hash2</key>
 			<data>
-			HD2cKN3yXPbmr9d8861KBooA3rWhjNSFaCVS0zS/mCw=
+			TSTYz20e2zkZb3qJd0vr69be0+bezQl4/cwMZWFDL98=
 			</data>
 		</dict>
 		<key>xros-arm64_x86_64-simulator/Headers/freetype/config/ftstdlib.h</key>
@@ -7405,17 +7416,6 @@
 			R9golPLD4Ye4ZZ0ZZv26RDSMFzmoh1GlpCpal8eiCc4=
 			</data>
 		</dict>
-		<key>xros-arm64_x86_64-simulator/Headers/freetype/ftlogging.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			1dkAAmwBH8HiEaeAFyZ4Axx2Ycw=
-			</data>
-			<key>hash2</key>
-			<data>
-			rfyx9sb/c7a/7XB8dNfCLirqdSjecoWI6wUbTssY8nk=
-			</data>
-		</dict>
 		<key>xros-arm64_x86_64-simulator/Headers/freetype/ftlzw.h</key>
 		<dict>
 			<key>hash</key>
@@ -7695,11 +7695,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			k3CM3iKNVf7aTcq+2xCX4Bm3vyU=
+			7bD/OgNPlOfdaeRWx0xshIoblmI=
 			</data>
 			<key>hash2</key>
 			<data>
-			6E2JKkTTOcZh+XQZ0elsj3Tizrj6LFob8MJjajx+pr8=
+			KxtTp+KNZF+gj3m7bs1LUOTi/8XTjvzg6hXDrn+k4Gw=
 			</data>
 		</dict>
 	</dict>

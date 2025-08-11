@@ -1,17 +1,22 @@
 # FreeTypeFramework
 
-Carefuly compiled with love [FreeType](https://freetype.org/index.html) library as an Xcode Framework and distributed as a Swift package so you can conviniently integrate it in your Xcode project and use in Swift or C.
+Carefuly compiled with love [FreeType](https://freetype.org/index.html) library as an Xcode Framework and distributed as a Swift package so you can conviniently integrate it in your Xcode project.
+
+- Use Swift, C or C++ to access the FreeType API
+- Build using `meson` and `c17` with `-O2` optimisation level
+- Available for all Apple platforms including simulators and both arm64 and x86 (when applicable) architectures
+- Supports color bitmap glyph formats in the PNG format using [libpng](https://github.com/pnggroup/libpng) (`png=enabled` feature), which is already prebuilt in the [LibPNGFramework](https://github.com/EvgenijLutz/LibPNGFramework) and linked to this package.
 
 
-# Installing FreeTypeFramework
+## Installing FreeTypeFramework
 
 Add the following dependency to your Package.swift:
 
 ```Swift
-.package(url: "https://github.com/EvgenijLutz/FreeTypeFramework.git", from: "1.0.0")
+.package(url: "https://github.com/EvgenijLutz/FreeTypeFramework.git", from: "2.13.3-alpha4")
 ```
 
-You will likely need to link the following libraries in your Xcode project (already included in Xcode):
+Since `libpng` and `FreeType` rely on libz that ships with OS, you will likely need to link the following libraries in your Xcode project (already included in Xcode):
 ```Plain
 libz.tbd
 libbz2.1.0.tbd
@@ -20,173 +25,60 @@ libbz2.1.0.tbd
 And you're good to go!
 
 
-# Using FreeTypeFramework
+## Framework contents
 
-After adding the package to your project, import the library in Swift:
+There are several products in the `FreeTypeFramework`:
+
+
+### FreeType - original freetype interface
+
+Precompiled as an XCFramework `FreeType` library without any extensions. After adding the package to your project, you can import the library in `Swift`:
 ```Swift
-import FreeTypeFramework
+import FreeType
 ```
 
-or in C:
+or in `C`/`C++`:
 ```C
 #include <libfreetype.h>
 ```
 
-And you're good to go!
+
+### FreeTypeC - best for C/C++
+
+A `C++` library that extends `FreeType`'s interface, links the `FreeType` target, empty at the moment. You can import the library in `Swift`:
+```Swift
+import FreeTypeC
+```
+
+or in `C`/`C++`:
+```C
+#include <FreeTypeC.h>
+```
 
 
-# TODO
-- Build with meson
-- Include support for [libpng](https://github.com/pnggroup/libpng)
+### FreeTypeFramework - best for Swift
+
+A `Swift` library that extends `FreeTypeC`'s interface, links the `FreeTypeC` target, empty at the moment. You can import the library in `Swift`:
+
+```Swift
+import FreeTypeFramework
+```
 
 
 # The journey of compiling FreeType
-These steps were valid only for FreeTypeFramework 1.0.0 release. The build process has been changed and will be updated here soon. For now, here is the old method of building the framework.
-Currently used version 2.13.3 and Xcode 16.4
+Currently used `freetype 2.13.3` and `Xcode 16.4`, you also need to have `meson` and `ninja` installed, usually via `homebrew`. Download the source code [here](https://download.savannah.gnu.org/releases/freetype/). From the FreeTypeFramework package, copy all files from the `Resources/Build` directory into the downloaded FreeType sources. Using terminal, navigate to the FreeType sources directory:
 ```bash
-git clone https://gitlab.freedesktop.org/freetype/freetype.git
+cd PATH_TO_FREETYPE_SOURCES
 ```
 
-## Docwriter
-
-If you don't have `docwriter` installed yet, you'll much likely get this warning after finishing the Step4:
-```plain
-'make refdoc' will fail since pip package 'docwriter' is not installed.
-  To install, run 'python3 -m pip install docwriter', or to use a Python
-  virtual environment, run 'make refdoc-venv' (requires pip package
-  'virtualenv').  These operations require Python >= 3.5.
-```
-
-To avoid this, install the `docwriter`:
+Clone somewhere the `LibPNGFramework` to use it for building `FreeType` with `libpng` support.
 ```bash
-python3 -m pip install docwriter
+git clone https://github.com/EvgenijLutz/LibPNGFramework.git
 ```
 
-## Step 1
-First, you need to get your signing identity:
+In the `build-apple-meson.sh` script, modify the `libpng_framework_path` (path to `LibPNGFramework.xcframework` in the previously downloaded `LibPNGFramework` repo), `platforms_path` (path to the `Contents/Developer/Platforms` in your `Xcode` app) and `signing_identity` (your Xcode signing identity to sign the framework you compile, see the comment for this variable in the `build-apple-meson.sh` script for instructions) variables. And execute the script:
 ```bash
-security find-identity -v -p codesigning
+bash build-apple-meson.sh
 ```
 
-Choose one of them in the list and execute the following command to define your signing identity and path to Xcode SDKs for later use:
-```bash
-export ft_developer="/Applications/Xcode.app/Contents/Developer"
-export ft_sing_identity=YOUR_SIGN_IDENTITY
-```
-
-
-## Step 2
-Set `ft_platform` to MacOSX, iPhoneOS, iPhoneSimulator, XROS, XRSimulator, AppleTVOS, AppleTVSimulator, WatchOS, WatchSimulator. Note that arm64 simulator is only available from iOS 14, tvOS14.
-```bash
-# Set target platform
-export ft_platform="WatchSimulator"
-export ft_sysroot="/Applications/Xcode.app/Contents/Developer/Platforms/$ft_platform.platform/Developer/SDKs/$ft_platform.sdk"
-
-# Specify minimum OS version depending on OS
-if [[ "$ft_platform" == "MacOSX" ]]; then
-     export ft_min_os="-mtargetos=macos11"
-elif [[ "$ft_platform" == "iPhoneOS" ]]; then
-     export ft_min_os="-mtargetos=ios12"
-elif [[ "$ft_platform" == "iPhoneSimulator" ]]; then
-     export ft_min_os="-mtargetos=ios14-simulator"
-elif [[ "$ft_platform" == "XROS" ]]; then
-     export ft_min_os="-mtargetos=xros1"
-elif [[ "$ft_platform" == "XRSimulator" ]]; then
-     export ft_min_os="-mtargetos=xros1-simulator"
-elif [[ "$ft_platform" == "AppleTVOS" ]]; then
-     export ft_min_os="-mtargetos=tvos12"
-elif [[ "$ft_platform" == "AppleTVSimulator" ]]; then
-     export ft_min_os="-mtargetos=tvos12-simulator"
-elif [[ "$ft_platform" == "WatchOS" ]]; then
-     export ft_min_os="-mtargetos=watchos8"
-elif [[ "$ft_platform" == "WatchSimulator" ]]; then
-     export ft_min_os="-mtargetos=watchos8-simulator"
-else
-     export ft_min_os=""
-fi
-echo "$ft_min_os"
-```
-
-
-## Step 3
-```bash
-# For every OS:
-export ft_arch="arm64"
-export ft_host="arm-apple-darwin"
-
-# Additionally to MacOSX, iPhoneSimulator, XRSimulator, AppleTVSimulator and WatchSimulator:
-export ft_arch="x86_64"
-export ft_host="x86_64-apple-darwin"
-```
-
-
-## Setp 4
-Build library with `C 17`. Don't forget to replace path to your downloaded freetype library in the following command:
-```bash
-make clean
-
-./configure --prefix=/Users/evgenij/Developer/Sources/freetype-2.13.3/install/$ft_platform/$ft_arch \
---host=$ft_host \
---enable-static=yes \
---enable-shared=no \
-CC="$ft_developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -isysroot $ft_sysroot" \
-CFLAGS="-arch $ft_arch -std=c17 $ft_min_os -I$ft_sysroot/usr/include/libxml2" \
-LDFLAGS="-arch $ft_arch"
-```
-
-
-## Step 5
-```bash
-make
-make install
-```
-
-
-## Optional - check supported OS version
-Go to the compiled library folder (somwhere in the install folder) and execute the following command:
-```bash
-otool -l libfreetype.a | grep -A 1 minos
-```
-
-
-## Setp 6 - only for universal libraries that should support both arm64 and x86
-Create a universal library for MacOSX, iPhoneSimulator, XRSimulator, AppleTVSimulator and WatchSimulator targets:
-```bash
-lipo -create -output install/$ft_platform/libfreetype.a install/$ft_platform/arm64/lib/libfreetype.a install/$ft_platform/x86_64/lib/libfreetype.a
-#lipo -create -output install/$ft_platform/libfreetype.dylib install/$ft_platform/arm64/lib/libfreetype.dylib install/$ft_platform/x86_64/lib/libfreetype.dylib
-```
-
-
-## Step 7
-
-FreeTypeFramework uses slighty modified headers (located at Resources/Headers) to make it possible to use in Swift and include as a single header in C.
-
-```bash
-# Use generated headers
-#xcodebuild -create-xcframework \
-#     -library install/MacOSX/libfreetype.a -headers install/MacOSX/arm64/include/freetype2 \
-#     -library install/iPhoneOS/arm64/lib/libfreetype.a -headers install/iPhoneOS/arm64/include/freetype2 \
-#     -library install/iPhoneSimulator/libfreetype.a -headers install/iPhoneSimulator/arm64/include/freetype2 \
-#     -library install/XROS/arm64/lib/libfreetype.a -headers install/XROS/arm64/include/freetype2 \
-#     -library install/XRSimulator/libfreetype.a -headers install/XRSimulator/arm64/include/freetype2 \
-#     -library install/AppleTVOS/arm64/lib/libfreetype.a -headers install/AppleTVOS/arm64/include/freetype2 \
-#     -library install/AppleTVSimulator/arm64/lib/libfreetype.a -headers install/AppleTVSimulator/arm64/include/freetype2 \
-#     -library install/WatchOS/arm64/lib/libfreetype.a -headers install/WatchOS/arm64/include/freetype2 \
-#     -library install/WatchSimulator/arm64/lib/libfreetype.a -headers install/WatchSimulator/arm64/include/freetype2 \
-#     -output install/libfreetype.xcframework
-
-# Use custom headers
-xcodebuild -create-xcframework \
-     -library install/MacOSX/libfreetype.a -headers install/Headers \
-     -library install/iPhoneOS/arm64/lib/libfreetype.a -headers install/Headers \
-     -library install/iPhoneSimulator/libfreetype.a -headers install/Headers \
-     -library install/XROS/arm64/lib/libfreetype.a -headers install/Headers \
-     -library install/XRSimulator/libfreetype.a -headers install/Headers \
-     -library install/AppleTVOS/arm64/lib/libfreetype.a -headers install/Headers \
-     -library install/AppleTVSimulator/arm64/lib/libfreetype.a -headers install/Headers \
-     -library install/WatchOS/arm64/lib/libfreetype.a -headers install/Headers \
-     -library install/WatchSimulator/arm64/lib/libfreetype.a -headers install/Headers \
-     -output install/libfreetype.xcframework
-
-codesign --timestamp -s $ft_sing_identity install/libfreetype.xcframework
-```
+If everything succeeds, you'll get `FreeTypeFramework.xcframework` in the `build-apple` folder. Voilà!

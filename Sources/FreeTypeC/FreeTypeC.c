@@ -7,8 +7,6 @@
 
 #include "FreeTypeC.h"
 
-#include <libfreetype.h>
-
 void testFunc(void) {
     FT_Int someInt = 0;
 }

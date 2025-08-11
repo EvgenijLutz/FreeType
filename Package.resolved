@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/EvgenijLutz/LibPNGFramework.git",
       "state" : {
-        "revision" : "57ccc0c5e9e1831efd645983e34c0ae18d7aed2f",
-        "version" : "1.6.50-alpha1"
+        "revision" : "1b70e7e62d4f65aabf80ee0dde94b57a48019949",
+        "version" : "1.6.50-alpha2"
       }
     }
   ],

@@ -6,7 +6,8 @@
 //
 
 import Foundation
-@_exported import FreeTypeC
+import FreeTypeC
+import FreeType
 
 //public struct FTTestStruct {
 //    public let text: String
