@@ -1,14 +1,16 @@
 # bash
 
+# FreeType
+
 # Get some help
 # meson configure >> help-meson.txt
 
 
 # Define some global variables
-libpng_framework_path='/Users/evgenij/Developer/Xcode projects/LibPNGFramework/LibPNG.xcframework'
+libpng_framework_path='/Users/evgenij/Developer/Xcode projects/LibPNG/Binaries/png.xcframework'
 platforms_path='/Applications/Xcode.app/Contents/Developer/Platforms'
 # Your signing identity to sign the xcframework. Execute "security find-identity -v -p codesigning" and select one from the list
-signing_identity=YOUR_SIGNING_IDENTITY
+signing_identity=B42A10624E8E06BC95CD03069100C6E67121D61B
 
 
 # Console output formatting
@@ -35,8 +37,10 @@ build_library() {
   local arch=$2
   local target_os=$3
 
+  # Determine config name
   local config_name="$platform_name/$arch"
 
+  # Determine meson cpu settings
   if [[ "$arch" == "arm64" ]]; then
     local meson_cpu="arm64"
     local meson_cpu_family="aarch64"
@@ -48,6 +52,7 @@ build_library() {
     exit 1
   fi
 
+  # Welcome message
   echo "Build for ${bold}$config_name${normal}"
   mkdir -p build-apple/$config_name
 
@@ -56,8 +61,6 @@ build_library() {
   exit_if_error
 
   # Generate meson config file for cross-compile
-  mkdir -p build-apple/$config_name/pkg-config
-  rm -f   "build-apple/$config_name/pkg-config/libpng.pc"
   echo \
 "[binaries]
 c = 'clang'
@@ -73,6 +76,7 @@ cpu = '$meson_cpu'
 endian = 'little'" \
 >> "build-apple/$config_name.txt"
   exit_if_error
+
 
   # Create custom pkg-config file for libpng to target specific platform and architecture
   mkdir -p build-apple/$config_name/
@@ -99,6 +103,8 @@ endian = 'little'" \
     exit 1
   fi
   local libpng_path="$libpng_framework_path/$libpng_target"
+  mkdir -p build-apple/$config_name/pkg-config
+  rm -f   "build-apple/$config_name/pkg-config/libpng.pc"
   echo \
 "prefix=\"$libpng_path\"
 exec_prefix=\${prefix}
@@ -116,7 +122,9 @@ Cflags: -I\"\${includedir}\"
 >> "build-apple/$config_name/pkg-config/libpng.pc"
   exit_if_error
 
+
   # Setup meson build
+  echo "Configure meson"
   meson setup build-apple/$config_name \
     --cross-file build-apple/$config_name.txt \
     -Dprefix=$(pwd)/build-apple/$config_name/install \
@@ -156,10 +164,10 @@ Cflags: -I\"\${includedir}\"
 
   # About modules
   # https://clang.llvm.org/docs/Modules.html
-  # Without module.modulemap FreeType is not exposed to Swift
+  # Without module.modulemap libfreetype is not exposed to Swift
   # Copy the module map into the directory with installed header files
-  mkdir -p build-apple/$config_name/install/include/freetype2/FreeType-Module
-  cp module.modulemap build-apple/$config_name/install/include/freetype2/FreeType-Module/module.modulemap
+  mkdir -p build-apple/$config_name/install/include/freetype2/libfreetype-Module
+  cp module.modulemap build-apple/$config_name/install/include/freetype2/libfreetype-Module/module.modulemap
   exit_if_error
 }
 
@@ -182,7 +190,7 @@ build_library XRSimulator      x86_64 xros1-simulator
 
 create_framework() {
   # Remove previously created framework if exists
-  rm -rf build-apple/FreeType.xcframework
+  rm -rf build-apple/libfreetype.xcframework
   exit_if_error
 
   # Merge macOS arm and x86 binaries
@@ -236,11 +244,11 @@ create_framework() {
     -library build-apple/WatchSimulator/libfreetype.a              -headers build-apple/WatchSimulator/arm64/install/include/freetype2 \
     -library build-apple/XROS/arm64/install/lib/libfreetype.a      -headers build-apple/XROS/arm64/install/include/freetype2 \
     -library build-apple/XRSimulator/libfreetype.a                 -headers build-apple/XRSimulator/arm64/install/include/freetype2 \
-    -output build-apple/FreeType.xcframework
+    -output build-apple/libfreetype.xcframework
   exit_if_error
 
   # And sign the framework
-  codesign --timestamp -s $signing_identity build-apple/FreeType.xcframework
+  codesign --timestamp -s $signing_identity build-apple/libfreetype.xcframework
   exit_if_error
 }
 create_framework

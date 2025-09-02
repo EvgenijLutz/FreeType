@@ -4,48 +4,48 @@
 import PackageDescription
 
 let package = Package(
-    name: "FreeTypeFramework",
+    name: "FreeType",
     platforms: [
-        .macOS(.v10_13),
-        .iOS(.v12),
-        .tvOS(.v12),
-        .visionOS(.v1),
-        .watchOS(.v8)
+        .macOS(.v14),
+        .iOS(.v17),
+        .tvOS(.v17),
+        .watchOS(.v10),
+        .visionOS(.v1)
     ],
     products: [
         .library(
-            name: "FreeTypeFramework",
-            targets: ["FreeTypeFramework"]
+            name: "FreeType",
+            targets: ["FreeType"]
         ),
         .library(
             name: "FreeTypeC",
             targets: ["FreeTypeC"]
         ),
         .library(
-            name: "FreeType",
-            targets: ["FreeType"]
+            name: "libfreetype",
+            targets: ["libfreetype"]
         ),
     ],
     dependencies: [
-        .package(url: "https://github.com/EvgenijLutz/LibPNGFramework.git", exact: "1.6.50-alpha2")
+        .package(url: "https://github.com/EvgenijLutz/LibPNG.git", exact: "1.6.50-alpha3")
     ],
     targets: [
         .binaryTarget(
-            name: "FreeType",
-            path: "FreeType.xcframework"
+            name: "libfreetype",
+            path: "Binaries/libfreetype.xcframework"
         ),
         .target(
             name: "FreeTypeC",
             dependencies: [
-                .product(name: "LibPNGC", package: "LibPNGFramework"),
-                .target(name: "FreeType")
+                .product(name: "LibPNGC", package: "LibPNG"),
+                .target(name: "libfreetype")
             ],
             swiftSettings: [
                 .interoperabilityMode(.C)
             ]
         ),
         .target(
-            name: "FreeTypeFramework",
+            name: "FreeType",
             dependencies: [
                 .target(name: "FreeTypeC")
             ],

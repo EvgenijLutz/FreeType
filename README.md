@@ -3,7 +3,7 @@
 Carefuly compiled with love [FreeType](https://freetype.org/index.html) library as an Xcode Framework and distributed as a Swift package so you can conviniently integrate it in your Xcode project.
 
 - Use Swift, C or C++ to access the FreeType API
-- Build using `meson` and `c17` with `-O2` optimisation level
+- Built using `meson` and `c17` with `-O2` optimisation level
 - Available for all Apple platforms including simulators and both arm64 and x86 (when applicable) architectures
 - Supports color bitmap glyph formats in the PNG format using [libpng](https://github.com/pnggroup/libpng) (`png=enabled` feature), which is already prebuilt in the [LibPNGFramework](https://github.com/EvgenijLutz/LibPNGFramework) and linked to this package.
 
@@ -63,6 +63,13 @@ A `Swift` library that extends `FreeTypeC`'s interface, links the `FreeTypeC` ta
 ```Swift
 import FreeTypeFramework
 ```
+
+
+## TODOs
+
+- Support Windows
+- Support Android
+- Support Linux
 
 
 # The journey of compiling FreeType

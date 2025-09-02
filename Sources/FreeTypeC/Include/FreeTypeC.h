@@ -1,6 +1,6 @@
 //
 //  FreeTypeC.h
-//  FreeTypeFramework
+//  FreeType
 //
 //  Created by Evgenij Lutz on 25.07.25.
 //
