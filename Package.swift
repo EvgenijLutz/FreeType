@@ -53,5 +53,9 @@ let package = Package(
                 .interoperabilityMode(.C)
             ]
         )
-    ]
+    ],
+    // The lcms2 library was compiled using c17, so set it also here
+    cLanguageStandard: .c17,
+    // Also use c++20, we don't live in the stone age, but still not ready to accept c++23
+    cxxLanguageStandard: .cxx20
 )
