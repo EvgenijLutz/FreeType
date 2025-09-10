@@ -37,11 +37,8 @@ let package = Package(
         .target(
             name: "FreeTypeC",
             dependencies: [
-                .product(name: "LibPNGC", package: "LibPNG"),
-                .target(name: "libfreetype")
-            ],
-            swiftSettings: [
-                .interoperabilityMode(.C)
+                .target(name: "libfreetype"),
+                .product(name: "LibPNGC", package: "LibPNG")
             ]
         ),
         .target(
@@ -50,7 +47,7 @@ let package = Package(
                 .target(name: "FreeTypeC")
             ],
             swiftSettings: [
-                .interoperabilityMode(.C)
+                .interoperabilityMode(.Cxx)
             ]
         )
     ],
