@@ -27,6 +27,6 @@ void resetError(CommonError* nullable error);
 
 void setFTError(CommonError* nullable error, int errorCode);
 
-#endif // __cplusplus
+#endif
 
 #endif // FreeTypeC_FTErrorC_hpp

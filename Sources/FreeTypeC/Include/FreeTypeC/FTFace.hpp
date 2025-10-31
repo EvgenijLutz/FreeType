@@ -51,6 +51,6 @@ public:
     
 } FT_REF_INTERFACE(FTFace);
 
-#endif // __cplusplus
+#endif
 
 #endif // FTFace_hpp

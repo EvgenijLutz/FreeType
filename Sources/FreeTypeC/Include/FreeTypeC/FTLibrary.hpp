@@ -5,17 +5,16 @@
 //  Created by Evgenij Lutz on 08.09.25.
 //
 
-#ifndef FreeTypeC_FTLibrary_hpp
-#define FreeTypeC_FTLibrary_hpp
-
-#if defined __cplusplus
+#pragma once
 
 #include "Common.hpp"
 #include "CommonError.hpp"
 
 
+class FTLibrary;
 class FTFace;
 class FTGlyphCollection;
+class FTGlyphBitmap;
 
 
 typedef bool (* FTProgressCallback)(void* nullable userInfo, float progress);
@@ -53,10 +52,6 @@ public:
     SWIFT_RETURNS_RETAINED;
     
     
-    //void exportGlyphs(const char* nonnull path, long faceIndex = 0, long faceInstanceIndex = 0, long width = 64, long height = 64, CommonError* nullable error = nullptr, FTProgressCallback nullable progressCallback = nullptr);
+    FTGlyphCollection* nullable exportGlyphs(const char* nonnull path, long faceIndex = 0, long faceInstanceIndex = 0, long width = 64, long height = 64, CommonError* nullable error = nullptr, FTProgressCallback nullable progressCallback = nullptr) SWIFT_RETURNS_RETAINED;
     
 } FT_REF_INTERFACE(FTLibrary);
-
-#endif // __cplusplus
-
-#endif // FreeTypeC_FTLibrary_hpp

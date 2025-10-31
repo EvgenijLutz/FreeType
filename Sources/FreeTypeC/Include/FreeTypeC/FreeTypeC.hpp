@@ -5,8 +5,7 @@
 //  Created by Evgenij Lutz on 25.07.25.
 //
 
-#ifndef FreeTypeC_hpp
-#define FreeTypeC_hpp
+#pragma once
 
 #if defined __cplusplus
 
@@ -16,6 +15,4 @@
 #include "FTLibrary.hpp"
 #include "FTFace.hpp"
 
-#endif // __cplusplus
-
-#endif // FreeTypeC_hpp
+#endif

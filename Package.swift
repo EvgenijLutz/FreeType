@@ -1,4 +1,4 @@
-// swift-tools-version: 6.1
+// swift-tools-version: 6.2
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -14,20 +14,21 @@ let package = Package(
     ],
     products: [
         .library(
-            name: "FreeType",
-            targets: ["FreeType"]
+            name: "libfreetype",
+            targets: ["libfreetype"]
         ),
         .library(
             name: "FreeTypeC",
             targets: ["FreeTypeC"]
         ),
         .library(
-            name: "libfreetype",
-            targets: ["libfreetype"]
+            name: "FreeType",
+            targets: ["FreeType"]
         ),
     ],
     dependencies: [
-        .package(url: "https://github.com/EvgenijLutz/LibPNG.git", exact: "1.6.50-alpha3")
+        //.package(url: "https://github.com/EvgenijLutz/LibPNG.git", exact: "1.6.50-alpha3"),
+        .package(url: "https://github.com/EvgenijLutz/LibPNG.git", branch: "main")
     ],
     targets: [
         .binaryTarget(
@@ -39,6 +40,9 @@ let package = Package(
             dependencies: [
                 .target(name: "libfreetype"),
                 .product(name: "LibPNGC", package: "LibPNG")
+            ],
+            cxxSettings: [
+                .enableWarning("all")
             ]
         ),
         .target(

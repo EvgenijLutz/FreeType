@@ -55,6 +55,6 @@ void type##Release(type* nonnull obj) { \
 }
 
 
-#endif // __cplusplus
+#endif
 
 #endif // FreeTypeC_Common_hpp
