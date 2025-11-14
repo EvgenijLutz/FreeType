@@ -7,6 +7,8 @@ Carefuly compiled with love [FreeType](https://freetype.org/index.html) library 
 - Available for all Apple platforms including simulators and both arm64 and x86 (when applicable) architectures
 - Supports color bitmap glyph formats in the PNG format using [libpng](https://github.com/pnggroup/libpng) (`png=enabled` feature), which is already prebuilt in the [LibPNG](https://github.com/EvgenijLutz/LibPNG) and linked to this package.
 
+As a temporary feature, the FreeType package also includes [msdfgen](https://github.com/Chlumsky/msdfgen) to generate SDF textures. It will be likely moved to a separate package. 
+
 
 ## Installing FreeType
 
@@ -72,12 +74,12 @@ Currently used `freetype 2.13.3` and `Xcode 16.4`, you also need to have `meson`
 cd PATH_TO_FREETYPE_SOURCES
 ```
 
-Clone somewhere the `LibPNGFramework` to use it for building `FreeType` with `libpng` support.
+Clone somewhere the `LibPNG` to use it for building `FreeType` with `libpng` support.
 ```bash
-git clone https://github.com/EvgenijLutz/LibPNGFramework.git
+git clone https://github.com/EvgenijLutz/LibPNG.git
 ```
 
-In the `build-apple-meson.sh` script, modify the `libpng_framework_path` (path to `LibPNGFramework.xcframework` in the previously downloaded `LibPNGFramework` repo), `platforms_path` (path to the `Contents/Developer/Platforms` in your `Xcode` app) and `signing_identity` (your Xcode signing identity to sign the framework you compile, see the comment for this variable in the `build-apple-meson.sh` script for instructions) variables. And execute the script:
+In the `build-apple-meson.sh` script, modify the `libpng_framework_path` (path to `LibPNG.xcframework` in the previously downloaded `LibPNG` repo), `platforms_path` (path to the `Contents/Developer/Platforms` in your `Xcode` app) and `signing_identity` (your Xcode signing identity to sign the framework you compile, see the comment for this variable in the `build-apple-meson.sh` script for instructions) variables. And execute the script:
 ```bash
 bash build-apple-meson.sh
 ```

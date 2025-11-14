@@ -5,12 +5,10 @@
 //  Created by Evgenij Lutz on 11.09.25.
 //
 
-#ifndef FTGlyphCollection_hpp
-#define FTGlyphCollection_hpp
+#pragma once
 
 #include "Common.hpp"
 
-#if defined __cplusplus
 
 class FTLibrary;
 
@@ -21,7 +19,7 @@ private:
     
     unsigned long _characterCode;
     
-    const char* nonnull _bitmapData;
+    const char* fn_nonnull _bitmapData;
     float _bitmapWidth;
     float _bitmapHeight;
     
@@ -36,11 +34,11 @@ private:
     float _vBearingY;
     float _vAdvance;
     
-    FT_REF_FRIEND_INTERFACE(FTGlyphBitmap)
     friend class FTLibrary;
+    FN_FRIEND_SWIFT_INTERFACE(FTGlyphBitmap)
     
     FTGlyphBitmap(unsigned long _characterCode,
-                  const char* nonnull bitmapData,
+                  const char* fn_nonnull bitmapData,
                   float bitmapWidth, float bitmapHeight,
                   float gWidth, float gHeight,
                   float hBearingX, float hBearingY, float hAdvance,
@@ -48,8 +46,7 @@ private:
     ~FTGlyphBitmap();
     
 public:
-    
-    const char* nonnull getBitmapData() SWIFT_COMPUTED_PROPERTY { return _bitmapData; }
+    const char* fn_nonnull getBitmapData() SWIFT_COMPUTED_PROPERTY { return _bitmapData; }
     float getBitmapWidth() SWIFT_COMPUTED_PROPERTY { return _bitmapWidth; }
     float getBitmapHeight() SWIFT_COMPUTED_PROPERTY { return _bitmapHeight; }
     
@@ -63,24 +60,26 @@ public:
     float getVerticalBearingX() SWIFT_COMPUTED_PROPERTY { return _vBearingX; }
     float getVerticalBearingY() SWIFT_COMPUTED_PROPERTY { return _vBearingY; }
     float getVerticalAdvance() SWIFT_COMPUTED_PROPERTY { return _vAdvance; }
-} FT_REF_INTERFACE(FTGlyphBitmap);
+} FN_SWIFT_INTERFACE(FTGlyphBitmap);
 
 
 class FTGlyphCollection final {
 private:
     std::atomic<size_t> _referenceCounter;
     
-    std::vector<FTGlyphBitmap* nonnull> _glyphs;
+    std::vector<FTGlyphBitmap* fn_nonnull> _glyphs;
     
-    FT_REF_FRIEND_INTERFACE(FTGlyphCollection)
     friend class FTLibrary;
+    FN_FRIEND_SWIFT_INTERFACE(FTGlyphCollection)
     
     FTGlyphCollection();
     ~FTGlyphCollection();
     
+    void _addGlyph(FTGlyphBitmap* fn_nonnull bitmap);
+    
 public:
-} FT_REF_INTERFACE(FTGlyphCollection);
+} FN_SWIFT_INTERFACE(FTGlyphCollection);
 
-#endif
 
-#endif // FTGlyphCollection_hpp
+FN_DEFINE_SWIFT_INTERFACE(FTGlyphBitmap)
+FN_DEFINE_SWIFT_INTERFACE(FTGlyphCollection)

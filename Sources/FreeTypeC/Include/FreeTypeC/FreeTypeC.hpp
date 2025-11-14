@@ -12,6 +12,7 @@
 //#include <libfreetype.h>
 
 #include "Common.hpp"
+#include "CommonError.hpp"
 #include "FTLibrary.hpp"
 #include "FTFace.hpp"
 

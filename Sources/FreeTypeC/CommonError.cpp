@@ -9,7 +9,7 @@
 #include <FreeTypeC/CommonError.hpp>
 
 
-void resetError(CommonError* nullable error) {
+void resetError(CommonError* fn_nullable error) {
     // Check if error can be reset
     if (error == nullptr) {
         return;
@@ -21,7 +21,7 @@ void resetError(CommonError* nullable error) {
 }
 
 
-void setFTError(CommonError* nullable error, int errorCode) {
+void setFTError(CommonError* fn_nullable error, int errorCode) {
     // Check if error can be set
     if (error == nullptr) {
         return;

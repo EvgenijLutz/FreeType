@@ -3,6 +3,19 @@
 
 import PackageDescription
 
+let dependencies: [Package.Dependency] = {
+#if true
+    [
+        // freetype uses libpbg to load some fonts that contain png glyphs
+        .package(url: "https://github.com/EvgenijLutz/LibPNG.git", from: .init(1, 6, 50)),
+    ]
+#else
+    [
+        .package(name: "LibPNG", path: "../LibPNG"),
+    ]
+#endif
+}()
+
 let package = Package(
     name: "FreeType",
     platforms: [
@@ -18,6 +31,10 @@ let package = Package(
             targets: ["libfreetype"]
         ),
         .library(
+            name: "msdfgen",
+            targets: ["msdfgen"]
+        ),
+        .library(
             name: "FreeTypeC",
             targets: ["FreeTypeC"]
         ),
@@ -26,10 +43,7 @@ let package = Package(
             targets: ["FreeType"]
         ),
     ],
-    dependencies: [
-        //.package(url: "https://github.com/EvgenijLutz/LibPNG.git", exact: "1.6.50-alpha3"),
-        .package(url: "https://github.com/EvgenijLutz/LibPNG.git", branch: "main")
-    ],
+    dependencies: dependencies,
     targets: [
         .binaryTarget(
             name: "libfreetype",
@@ -39,6 +53,7 @@ let package = Package(
             name: "FreeTypeC",
             dependencies: [
                 .target(name: "libfreetype"),
+                // Make sure to include libpbg to avoid linking errors because libfreetype needs it
                 .product(name: "LibPNGC", package: "LibPNG")
             ],
             cxxSettings: [
@@ -46,16 +61,30 @@ let package = Package(
             ]
         ),
         .target(
+            name: "msdfgen",
+            dependencies: [
+                .target(name: "FreeTypeC"),
+            ],
+            cSettings: [
+                //.define("MSDFGEN_PUBLIC", to: " /* none */ ")
+            ],
+            cxxSettings: [
+                .enableWarning("all"),
+                //.define("MSDFGEN_PUBLIC", to: " /* wtf why are you not working */ ")
+            ]
+        ),
+        .target(
             name: "FreeType",
             dependencies: [
-                .target(name: "FreeTypeC")
+                .target(name: "FreeTypeC"),
+                .target(name: "msdfgen")
             ],
             swiftSettings: [
                 .interoperabilityMode(.Cxx)
             ]
         )
     ],
-    // The lcms2 library was compiled using c17, so set it also here
+    // The libpng library was compiled using c17, so set it also here
     cLanguageStandard: .c17,
     // Also use c++20, we don't live in the stone age, but still not ready to accept c++23
     cxxLanguageStandard: .cxx20

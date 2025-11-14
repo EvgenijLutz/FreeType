@@ -1,60 +1,93 @@
 //
 //  Common.hpp
-//  FreeType
+//  CommonHeaders
 //
-//  Created by Evgenij Lutz on 08.09.25.
+//  Created by Evgenij Lutz on 11.11.25.
 //
 
-#ifndef FreeTypeC_Common_hpp
-#define FreeTypeC_Common_hpp
+#pragma once
 
-#if defined __cplusplus
-
-#include <swift/bridging>
+#include <stdio.h>
+#include <atomic>
+#include <span>
 #include <vector>
 #include <string>
-#include <atomic>
 
-
-#if !defined nullable
-#define nullable __nullable
-#endif
-
-#if !defined nonnull
-#define nonnull __nonnull
-#endif
-
-
-#if defined FREETYPE_H_
-#define FT_Library_impl FT_Library
-#define FT_Face_impl FT_Face
+#if __has_include(<swift/bridging>)
+#  include <swift/bridging>
 #else
-#define FT_Library_impl void*
-#define FT_Face_impl void*
-#endif // FREETYPE_H_
+// from <swift/bridging>
+#  define SWIFT_SELF_CONTAINED
+#  define SWIFT_RETURNS_INDEPENDENT_VALUE
+#  define SWIFT_SHARED_REFERENCE(_retain, _release)
+#  define SWIFT_IMMORTAL_REFERENCE
+#  define SWIFT_UNSAFE_REFERENCE
+#  define SWIFT_NAME(_name)
+#  define SWIFT_CONFORMS_TO_PROTOCOL(_moduleName_protocolName)
+#  define SWIFT_COMPUTED_PROPERTY
+#  define SWIFT_MUTATING
+#  define SWIFT_UNCHECKED_SENDABLE
+#  define SWIFT_NONCOPYABLE
+#  define SWIFT_NONESCAPABLE
+#  define SWIFT_ESCAPABLE
+#  define SWIFT_ESCAPABLE_IF(...)
+#  define SWIFT_RETURNS_RETAINED
+#  define SWIFT_RETURNS_UNRETAINED
+#  define SWIFT_PRIVATE_FILEID(_fileID)
+#endif
 
 
-#define FT_REF_FRIEND_INTERFACE(type) \
-friend type* nonnull type##Retain(type* nonnull obj) SWIFT_RETURNS_UNRETAINED; \
-friend void type##Release(type* nonnull ojb);
+#ifndef fn_nullable
+#define fn_nullable __nullable
+#endif
 
-#define FT_REF_INTERFACE(type) \
-SWIFT_SHARED_REFERENCE(type##Retain, type##Release)
+#ifndef fn_nonnull
+#define fn_nonnull __nonnull
+#endif
 
-#define FT_REF_INTERFACE_IMPL(type) \
-type* nonnull type##Retain(type* nonnull obj) { \
-    if (obj) { \
-        obj->_referenceCounter.fetch_add(1); \
+#ifndef fn_noescape
+#define fn_noescape _LIBCPP_NOESCAPE
+#endif
+
+#ifndef fn_lifetimebound
+#define fn_lifetimebound _LIBCPP_LIFETIMEBOUND
+#endif
+
+
+#ifndef FN_FRIEND_SWIFT_INTERFACE
+#define FN_FRIEND_SWIFT_INTERFACE(name) \
+friend name* fn_nullable name##Retain(name* fn_nullable obj) SWIFT_RETURNS_UNRETAINED; \
+friend void name##Release(name* fn_nullable obj);
+#endif
+
+
+#ifndef FN_SWIFT_INTERFACE
+#define FN_SWIFT_INTERFACE(name) SWIFT_SHARED_REFERENCE(name##Retain, name##Release)
+#endif
+
+
+#ifndef FN_DEFINE_SWIFT_INTERFACE
+#define FN_DEFINE_SWIFT_INTERFACE(name) \
+name* fn_nullable name##Retain(name* fn_nullable obj) SWIFT_RETURNS_UNRETAINED; \
+void name##Release(name* fn_nullable obj);
+#endif
+
+
+#ifndef FN_IMPLEMENT_SWIFT_INTERFACE1
+#define FN_IMPLEMENT_SWIFT_INTERFACE1(name) \
+name* fn_nullable name##Retain(name* fn_nullable obj) { \
+    if (obj == nullptr) { \
+        return nullptr; \
     } \
+    obj->_referenceCounter.fetch_add(1); \
     return obj; \
 } \
-void type##Release(type* nonnull obj) { \
-    if (obj && obj->_referenceCounter.fetch_sub(1) == 1) { \
+void name##Release(name* fn_nullable obj) { \
+    if (obj == nullptr) { \
+        return; \
+    } \
+    if (obj->_referenceCounter.fetch_sub(1) == 1) { \
         delete obj; \
     } \
 }
-
-
 #endif
-
-#endif // FreeTypeC_Common_hpp

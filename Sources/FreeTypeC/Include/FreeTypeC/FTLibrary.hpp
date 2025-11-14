@@ -17,7 +17,7 @@ class FTGlyphCollection;
 class FTGlyphBitmap;
 
 
-typedef bool (* FTProgressCallback)(void* nullable userInfo, float progress);
+typedef bool (* FTProgressCallback)(void* fn_nullable userInfo, float progress);
 
 
 /// FreeType library that uses ``FT_Library`` under the hood.
@@ -26,32 +26,35 @@ typedef bool (* FTProgressCallback)(void* nullable userInfo, float progress);
 class FTLibrary final {
 private:
     std::atomic<size_t> _referenceCounter;
-    FT_Library_impl nonnull _library;
+    FT_Library_impl fn_nonnull _library;
     
-    FT_REF_FRIEND_INTERFACE(FTLibrary);
+    FN_FRIEND_SWIFT_INTERFACE(FTLibrary);
     
-    FTLibrary(FT_Library_impl nonnull library);
+    FTLibrary(FT_Library_impl fn_nonnull library);
     ~FTLibrary();
     
 public:
-    static FTLibrary* nullable create(CommonError* nullable error = nullptr)
+    static FTLibrary* fn_nullable create(CommonError* fn_nullable error = nullptr)
     SWIFT_NAME(__createUnsafe(_:))
     SWIFT_RETURNS_RETAINED;
     
     
-    long readNumFaces(const char* nonnull path, CommonError* nullable error = nullptr)
+    long readNumFaces(const char* fn_nonnull path, CommonError* fn_nullable error = nullptr)
     SWIFT_NAME(__readNumFacesUnsafe(_:_:));
     
     
-    long readNumFaceInstances(const char* nonnull path, long faceIndex, CommonError* nullable error = nullptr)
+    long readNumFaceInstances(const char* fn_nonnull path, long faceIndex, CommonError* fn_nullable error = nullptr)
     SWIFT_NAME(__readNumFaceInstancesUnsafe(_:_:_:));
     
     
-    FTFace* nullable openFace(const char* nonnull path, long faceIndex = 0, long faceInstanceIndex = 0, CommonError* nullable error = nullptr)
+    FTFace* fn_nullable openFace(const char* fn_nonnull path, long faceIndex = 0, long faceInstanceIndex = 0, CommonError* fn_nullable error = nullptr)
     SWIFT_NAME(__openFaceUnsafe(_:_:_:_:))
     SWIFT_RETURNS_RETAINED;
     
     
-    FTGlyphCollection* nullable exportGlyphs(const char* nonnull path, long faceIndex = 0, long faceInstanceIndex = 0, long width = 64, long height = 64, CommonError* nullable error = nullptr, FTProgressCallback nullable progressCallback = nullptr) SWIFT_RETURNS_RETAINED;
+    FTGlyphCollection* fn_nullable exportGlyphs(const char* fn_nonnull path, long faceIndex = 0, long faceInstanceIndex = 0, long width = 64, long height = 64, CommonError* fn_nullable error = nullptr, FTProgressCallback fn_nullable progressCallback = nullptr) SWIFT_RETURNS_RETAINED;
     
-} FT_REF_INTERFACE(FTLibrary);
+} FN_SWIFT_INTERFACE(FTLibrary);
+
+
+FN_DEFINE_SWIFT_INTERFACE(FTLibrary)

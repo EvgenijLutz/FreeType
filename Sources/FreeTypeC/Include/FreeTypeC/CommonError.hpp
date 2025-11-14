@@ -5,12 +5,20 @@
 //  Created by Evgenij Lutz on 08.09.25.
 //
 
-#ifndef FreeTypeC_FTErrorC_hpp
-#define FreeTypeC_FTErrorC_hpp
-
-#if defined __cplusplus
+#pragma once
 
 #include "Common.hpp"
+
+
+#if defined FREETYPE_H_
+#define FT_Library_impl FT_Library
+#define FT_Face_impl FT_Face
+#else
+#define FT_Library_impl void*
+#define FT_Face_impl void*
+#endif // FREETYPE_H_
+
+
 
 #define FTErrorC_MessageLength 64
 
@@ -22,11 +30,7 @@ struct CommonError {
 };
 
 
-void resetError(CommonError* nullable error);
+void resetError(CommonError* fn_nullable error);
 
 
-void setFTError(CommonError* nullable error, int errorCode);
-
-#endif
-
-#endif // FreeTypeC_FTErrorC_hpp
+void setFTError(CommonError* fn_nullable error, int errorCode);

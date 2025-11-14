@@ -9,10 +9,7 @@
 #include <FreeTypeC/FTFace.hpp>
 
 
-FT_REF_INTERFACE_IMPL(FTFace)
-
-
-FTFace::FTFace(FT_Face_impl nonnull face):
+FTFace::FTFace(FT_Face_impl fn_nonnull face):
 _referenceCounter(1),
 _face(face) {
     //
@@ -52,7 +49,7 @@ FTGlyphIndex FTFace::getGlyphIndex(FTCharacterCode characterCode) {
 }
 
 
-void* nullable FTFace::loadGlyph(FTGlyphIndex glyphIndex, CommonError* nullable error) {
+void* fn_nullable FTFace::loadGlyph(FTGlyphIndex glyphIndex, CommonError* fn_nullable error) {
     resetError(error);
     
     auto ftGlyphIndex = static_cast<FT_UInt>(glyphIndex);
@@ -69,3 +66,7 @@ void* nullable FTFace::loadGlyph(FTGlyphIndex glyphIndex, CommonError* nullable 
     
     return nullptr;
 }
+
+
+
+FN_IMPLEMENT_SWIFT_INTERFACE1(FTFace)

@@ -8,11 +8,10 @@
 #include <FreeTypeC/FTGlyphCollection.hpp>
 
 
-FT_REF_INTERFACE_IMPL(FTGlyphBitmap)
-
+// MARK: FTGlyphBitmap
 
 FTGlyphBitmap::FTGlyphBitmap(unsigned long characterCode,
-                             const char* nonnull bitmapData,
+                             const char* fn_nonnull bitmapData,
                              float bitmapWidth, float bitmapHeight,
                              float gWidth, float gHeight,
                              float hBearingX, float hBearingY, float hAdvance,
@@ -37,3 +36,24 @@ _vAdvance(vAdvance) {
 FTGlyphBitmap::~FTGlyphBitmap() {
     delete [] _bitmapData;
 }
+
+
+// MARK: FTGlyphCollection
+
+FTGlyphCollection::FTGlyphCollection():
+_referenceCounter(1) {
+    //
+}
+
+
+FTGlyphCollection::~FTGlyphCollection() {
+    //
+}
+
+void FTGlyphCollection::_addGlyph(FTGlyphBitmap* fn_nonnull bitmap) {
+    _glyphs.push_back(FTGlyphBitmapRetain(bitmap));
+}
+
+
+FN_IMPLEMENT_SWIFT_INTERFACE1(FTGlyphBitmap)
+FN_IMPLEMENT_SWIFT_INTERFACE1(FTGlyphCollection)

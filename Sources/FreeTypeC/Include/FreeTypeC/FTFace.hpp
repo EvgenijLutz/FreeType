@@ -5,12 +5,9 @@
 //  Created by Evgenij Lutz on 08.09.25.
 //
 
-#ifndef FTFace_hpp
-#define FTFace_hpp
+#pragma once
 
-#if defined __cplusplus
-
-#include "Common.hpp"
+#include <FreeTypeC/Common.hpp>
 #include <FreeTypeC/CommonError.hpp>
 
 
@@ -28,12 +25,12 @@ class FTFace final {
 private:
     std::atomic<size_t> _referenceCounter;
     
-    FT_Face_impl nonnull _face;
+    FT_Face_impl fn_nonnull _face;
     
     friend class FTLibrary;
-    FT_REF_FRIEND_INTERFACE(FTFace);
+    FN_FRIEND_SWIFT_INTERFACE(FTFace);
     
-    FTFace(FT_Face_impl nonnull face);
+    FTFace(FT_Face_impl fn_nonnull face);
     ~FTFace();
     
 public:
@@ -47,10 +44,9 @@ public:
     FTGlyphIndex getGlyphIndex(FTCharacterCode characterCode);
     
     
-    void* nullable loadGlyph(FTGlyphIndex glyphIndex, CommonError* nullable error) SWIFT_NAME(__loadGlyphUnsafe(_:_:));
+    void* fn_nullable loadGlyph(FTGlyphIndex glyphIndex, CommonError* fn_nullable error) SWIFT_NAME(__loadGlyphUnsafe(_:_:));
     
-} FT_REF_INTERFACE(FTFace);
+} FN_SWIFT_INTERFACE(FTFace);
 
-#endif
 
-#endif // FTFace_hpp
+FN_DEFINE_SWIFT_INTERFACE(FTFace)

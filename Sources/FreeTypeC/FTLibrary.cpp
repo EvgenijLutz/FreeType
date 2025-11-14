@@ -11,11 +11,7 @@
 #include <FreeTypeC/FTGlyphCollection.hpp>
 
 
-FT_REF_INTERFACE_IMPL(FTLibrary)
-FT_REF_INTERFACE_IMPL(FTGlyphCollection)
-
-
-FTLibrary::FTLibrary(FT_Library_impl nonnull library):
+FTLibrary::FTLibrary(FT_Library_impl fn_nonnull library):
 _referenceCounter(1),
 _library(library) {
 }
@@ -26,7 +22,7 @@ FTLibrary::~FTLibrary() {
 }
 
 
-FTLibrary* nullable FTLibrary::create(CommonError* nullable error) {
+FTLibrary* fn_nullable FTLibrary::create(CommonError* fn_nullable error) {
     resetError(error);
     FT_Library library;
     auto errorCode = FT_Init_FreeType(&library);
@@ -39,7 +35,7 @@ FTLibrary* nullable FTLibrary::create(CommonError* nullable error) {
 }
 
 
-long FTLibrary::readNumFaces(const char* nonnull path, CommonError* nullable error) {
+long FTLibrary::readNumFaces(const char* fn_nonnull path, CommonError* fn_nullable error) {
     resetError(error);
     // About face examination (see the face_index parameter):
     // https://freetype.org/freetype2/docs/reference/ft2-face_creation.html#ft_open_face
@@ -60,7 +56,7 @@ long FTLibrary::readNumFaces(const char* nonnull path, CommonError* nullable err
 }
 
 
-long FTLibrary::readNumFaceInstances(const char* nonnull path, long faceIndex, CommonError* nullable error) {
+long FTLibrary::readNumFaceInstances(const char* fn_nonnull path, long faceIndex, CommonError* fn_nullable error) {
     resetError(error);
     // About face examination (see the face_index parameter):
     // https://freetype.org/freetype2/docs/reference/ft2-face_creation.html#ft_open_face
@@ -81,7 +77,7 @@ long FTLibrary::readNumFaceInstances(const char* nonnull path, long faceIndex, C
 }
 
 
-FTFace* nullable FTLibrary::openFace(const char* nonnull path, long faceIndex, long faceInstanceIndex, CommonError* nullable error) {
+FTFace* fn_nullable FTLibrary::openFace(const char* fn_nonnull path, long faceIndex, long faceInstanceIndex, CommonError* fn_nullable error) {
     resetError(error);
     auto faceFlags = std::abs(faceIndex) | (std::abs(faceInstanceIndex) << 16);
     FT_Face face;
@@ -99,7 +95,7 @@ FTFace* nullable FTLibrary::openFace(const char* nonnull path, long faceIndex, l
 }
 
 
-FTGlyphCollection* FTLibrary::exportGlyphs(const char* nonnull path, long faceIndex, long faceInstanceIndex, long width, long height, CommonError* nullable error, FTProgressCallback nullable progressCallback) {
+FTGlyphCollection* fn_nullable FTLibrary::exportGlyphs(const char* fn_nonnull path, long faceIndex, long faceInstanceIndex, long width, long height, CommonError* fn_nullable error, FTProgressCallback fn_nullable progressCallback) {
     // Success by default
     resetError(error);
     
@@ -131,11 +127,15 @@ FTGlyphCollection* FTLibrary::exportGlyphs(const char* nonnull path, long faceIn
     };
     
     
+    // Create a glyph collection
+    auto collection = new FTGlyphCollection();
+    
+    
     FT_UInt agindex = 0;
-        FT_ULong code = FT_Get_First_Char(face, &agindex);
-        long numCharacters = 0;
+    FT_ULong code = FT_Get_First_Char(face, &agindex);
+    //long numCharacters = 0;
     while (agindex != 0) {
-        numCharacters += 1;
+        //numCharacters += 1;
         code = FT_Get_Next_Char(face, code, &agindex);
         
         
@@ -172,7 +172,7 @@ FTGlyphCollection* FTLibrary::exportGlyphs(const char* nonnull path, long faceIn
         if (FT_Set_Pixel_Sizes(face, static_cast<FT_UInt>(width), static_cast<FT_UInt>(height))) {
             // Failed to set size
             setFTError(error, -1);
-            return;
+            return nullptr;
         }
 #endif
         
@@ -180,20 +180,20 @@ FTGlyphCollection* FTLibrary::exportGlyphs(const char* nonnull path, long faceIn
         if (FT_Load_Char(face, code, FT_LOAD_RENDER)) {
             // Failed to render the character
             setFTError(error, -1);
-            return;
+            return nullptr;
         }
         
         auto bitmap = face->glyph->bitmap;
         if (bitmap.pixel_mode != FT_PIXEL_MODE_GRAY) {
             // Unsupported pixel mode
             setFTError(error, -1);
-            return;
+            return nullptr;
         }
         
         if (bitmap.width < 1 || bitmap.rows < 1) {
             // No glyph for symbol
             setFTError(error, -1);
-            return;
+            return nullptr;
         }
         
         auto metrics = face->glyph->metrics;
@@ -232,29 +232,16 @@ FTGlyphCollection* FTLibrary::exportGlyphs(const char* nonnull path, long faceIn
         
         //callback(userInfo, FTLoadGlyphResult::successTransferred(glyph));
         
-        
-        
-        
-        
-        
-        
+        collection->_addGlyph(glyph);
+        FTGlyphBitmapRelease(glyph);
     }
     
     
     // Clean up
     FT_Done_Face(face);
     
-    return nullptr;
+    return collection;
 }
 
 
-// MARK: - FTGlyphCollection
-
-FTGlyphCollection::FTGlyphCollection():
-_referenceCounter() {
-    
-}
-
-FTGlyphCollection::~FTGlyphCollection() {
-    //
-}
+FN_IMPLEMENT_SWIFT_INTERFACE1(FTLibrary)
