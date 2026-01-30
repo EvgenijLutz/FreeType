@@ -4,7 +4,7 @@
 import PackageDescription
 
 let dependencies: [Package.Dependency] = {
-#if true
+#if false
     [
         // freetype uses libpbg to load some fonts that contain png glyphs
         .package(url: "https://github.com/EvgenijLutz/LibPNG.git", from: .init(1, 6, 50)),
@@ -16,6 +16,22 @@ let dependencies: [Package.Dependency] = {
 #endif
 }()
 
+
+let libFreeTypeArtifactTarget: Target = {
+#if os(macOS) || os(iOS) || os(tvOS) || os(watchOS) || os(visionOS)
+.binaryTarget(
+    name: "libfreetype",
+    path: "Binaries/libfreetype.xcframework"
+)
+#else
+.binaryTarget(
+    name: "libfreetype",
+    path: "Binaries/libfreetype.artifactbundle"
+)
+#endif
+}()
+
+
 let package = Package(
     name: "FreeType",
     platforms: [
@@ -23,7 +39,8 @@ let package = Package(
         .iOS(.v17),
         .tvOS(.v17),
         .watchOS(.v10),
-        .visionOS(.v1)
+        .visionOS(.v1),
+        .custom("Android", versionString: "21")
     ],
     products: [
         .library(
@@ -45,10 +62,7 @@ let package = Package(
     ],
     dependencies: dependencies,
     targets: [
-        .binaryTarget(
-            name: "libfreetype",
-            path: "Binaries/libfreetype.xcframework"
-        ),
+        libFreeTypeArtifactTarget,
         .target(
             name: "FreeTypeC",
             dependencies: [

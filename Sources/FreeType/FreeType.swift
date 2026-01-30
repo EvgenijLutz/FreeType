@@ -6,8 +6,9 @@
 //
 
 import Foundation
-import FreeTypeC
 import libfreetype
+@_exported import FreeTypeC
+import msdfgen
 
 
 func test() {
@@ -19,16 +20,18 @@ func test() {
 }
 
 
-public func testFont(path: String) throws {
+public func testFont(path: String, _ index: Int) throws -> SDFImage? {
     let library = try FTLibrary.create()
     let face = try library.openFace(at: path)
-    let characters = face.listCharacterCodes()
+//    let characters = face.listCharacterCodes()
+//    
+//    if let firstCharacterCode = characters.first {
+//        print("First character code: \(firstCharacterCode)")
+//        let glyphIndex = face.getGlyphIndex(firstCharacterCode)
+//        print("Glyph index: \(glyphIndex)")
+//    }
+//    
+//    print("Num characters: \(characters.count)")
     
-    if let firstCharacterCode = characters.first {
-        print("First character code: \(firstCharacterCode)")
-        let glyphIndex = face.getGlyphIndex(firstCharacterCode)
-        print("Glyph index: \(glyphIndex)")
-    }
-    
-    print("Num characters: \(characters.count)")
+    return generateSDFImage(face, .init(index))
 }

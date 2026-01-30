@@ -46,6 +46,8 @@ public:
     
     void* fn_nullable loadGlyph(FTGlyphIndex glyphIndex, CommonError* fn_nullable error) SWIFT_NAME(__loadGlyphUnsafe(_:_:));
     
+    FT_Face_impl fn_nonnull _getFace() { return _face; }
+    
 } FN_SWIFT_INTERFACE(FTFace);
 
 

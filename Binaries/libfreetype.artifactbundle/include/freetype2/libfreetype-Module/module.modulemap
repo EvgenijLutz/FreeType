@@ -1,0 +1,5 @@
+module libfreetype {
+    header "../libfreetype.h"
+
+    export *
+}
