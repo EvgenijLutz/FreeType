@@ -33,7 +33,7 @@ let package = Package(
         ),
     ],
     dependencies: {
-#if false
+#if true
         [
             // freetype uses libpbg to load some fonts that contain png glyphs
             .package(url: "https://github.com/EvgenijLutz/LibPNG.git", from: .init(1, 6, 50)),
