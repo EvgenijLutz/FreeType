@@ -42,7 +42,7 @@ SWIFT_UNCHECKED_SENDABLE;
 
 /// Generates an SDF image.
 ///
-/// Sample code to bride SDFImage to an ImageContainer instance:
+/// Sample code to bridge SDFImage to an ImageContainer instance:
 /// ```Swift
 /// struct ContentView: View {
 ///     @State var unicodeIndexString: String = "1"
@@ -116,7 +116,7 @@ SWIFT_UNCHECKED_SENDABLE;
 ///     }
 /// }
 /// ```
-SDFImage* fn_nullable generateSDFImage(FTFace* fn_nonnull face, unsigned long unicodeIndex) SWIFT_RETURNS_RETAINED;
+SDFImage* fn_nullable generateSDFImage(FTFace* fn_nonnull face, unsigned long unicodeIndex, int width = 64, int height = 64, bool centered = false) SWIFT_RETURNS_RETAINED;
 
 
 FN_DEFINE_SWIFT_INTERFACE(SDFImage)

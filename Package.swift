@@ -3,34 +3,6 @@
 
 import PackageDescription
 
-let dependencies: [Package.Dependency] = {
-#if true
-    [
-        // freetype uses libpbg to load some fonts that contain png glyphs
-        .package(url: "https://github.com/EvgenijLutz/LibPNG.git", from: .init(1, 6, 50)),
-    ]
-#else
-    [
-        .package(name: "LibPNG", path: "../LibPNG"),
-    ]
-#endif
-}()
-
-
-let libFreeTypeArtifactTarget: Target = {
-#if os(macOS) || os(iOS) || os(tvOS) || os(watchOS) || os(visionOS)
-.binaryTarget(
-    name: "libfreetype",
-    path: "Binaries/libfreetype.xcframework"
-)
-#else
-.binaryTarget(
-    name: "libfreetype",
-    path: "Binaries/libfreetype.artifactbundle"
-)
-#endif
-}()
-
 
 let package = Package(
     name: "FreeType",
@@ -40,7 +12,7 @@ let package = Package(
         .tvOS(.v17),
         .watchOS(.v10),
         .visionOS(.v1),
-        .custom("Android", versionString: "21")
+        .custom("Android", versionString: "5.0")
     ],
     products: [
         .library(
@@ -60,15 +32,42 @@ let package = Package(
             targets: ["FreeType"]
         ),
     ],
-    dependencies: dependencies,
+    dependencies: {
+#if false
+        [
+            // freetype uses libpbg to load some fonts that contain png glyphs
+            .package(url: "https://github.com/EvgenijLutz/LibPNG.git", from: .init(1, 6, 50)),
+            .package(url: "https://github.com/EvgenijLutz/Brotli.git", from: .init(1, 2, 0)),
+        ]
+#else
+        [
+            .package(name: "LibPNG", path: "../LibPNG"),
+            .package(name: "Brotli", path: "../Brotli"),
+        ]
+#endif
+    }(),
     targets: [
-        libFreeTypeArtifactTarget,
+        {
+#if os(macOS) || os(iOS) || os(tvOS) || os(watchOS) || os(visionOS)
+            .binaryTarget(
+                name: "libfreetype",
+                path: "Binaries/libfreetype.xcframework"
+            )
+#else
+            .binaryTarget(
+                name: "libfreetype",
+                path: "Binaries/libfreetype.artifactbundle"
+            )
+#endif
+        }(),
         .target(
             name: "FreeTypeC",
             dependencies: [
                 .target(name: "libfreetype"),
                 // Make sure to include libpbg to avoid linking errors because libfreetype needs it
-                .product(name: "LibPNGC", package: "LibPNG")
+                .product(name: "LibPNGC", package: "LibPNG"),
+                .product(name: "libbrotlicommon", package: "Brotli"),
+                .product(name: "libbrotlidec", package: "Brotli"),
             ],
             cxxSettings: [
                 .enableWarning("all")

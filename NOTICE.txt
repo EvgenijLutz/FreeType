@@ -1,0 +1,2 @@
+This product bundles precompiled versions of third-party libraries.
+See "Third-Party Notices" for full license texts.

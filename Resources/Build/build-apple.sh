@@ -1,4 +1,4 @@
-# bash
+# bash build-apple.sh
 
 # FreeType
 
@@ -11,7 +11,7 @@ signing_identity=YOUR_SIGNING_IDENTITY
 ndk_path="/Users/evgenij/Library/Android/sdk/ndk/29.0.13846066"
 
 # FreeType source code folder
-target="freetype-2.14.1"
+source_name="freetype-2.14.2"
 
 
 # Console output formatting
@@ -59,7 +59,12 @@ build_library() {
     fi
 
     # LibPNG artifact
-    libpng_artifact_path="/Users/evgenij/Developer/Xcode\\\\ projects/LibPNG/Binaries/png.xcframework"
+    libpng_artifact_path="/Users/evgenij/Developer/Xcode projects/LibPNG/Binaries/png.xcframework"
+
+    # Brotli artifact
+    brotlicommon_artifact_path="/Users/evgenij/Developer/Xcode projects/Brotli/Binaries/libbrotlicommon.xcframework"
+    brotlienc_artifact_path="/Users/evgenij/Developer/Xcode projects/Brotli/Binaries/libbrotlienc.xcframework"
+    brotlidec_artifact_path="/Users/evgenij/Developer/Xcode projects/Brotli/Binaries/libbrotlidec.xcframework"
 
     # Get the xcframework target name
     if [[ "$platform" == "MacOSX" ]]; then
@@ -104,6 +109,10 @@ build_library() {
     # Use direct path to the static library instead, with the "-l" (not "-L") flag:
     export LIBPNG_LIBS="-l\"$libpng_artifact_path/$framework_target/libpng16.a\""
 
+    # Provide brotli
+    export BROTLI_CFLAGS="-I\"$brotlicommon_artifact_path/$framework_target/Headers\" -I\"$brotlienc_artifact_path/$framework_target/Headers\" -I\"$brotlidec_artifact_path/$framework_target/Headers\""
+    export BROTLI_LIBS="-l\"$brotlicommon_artifact_path/$framework_target/libbrotlicommon.a\" -l\"$brotlienc_artifact_path/$framework_target/libbrotlienc.a\" -l\"$brotlidec_artifact_path/$framework_target/libbrotlidec.a\""
+
     local arch_flags="-arch $arch"
     local target_os_flags="-mtargetos=$target_os"
     export CC="$developer_path/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang"
@@ -123,6 +132,11 @@ build_library() {
     # LibPNG artifact
     libpng_artifact_path='/Users/evgenij/Developer/Xcode projects/LibPNG/Binaries/png.artifactbundle'
 
+    # Brotli artifact
+    brotlicommon_artifact_path="/Users/evgenij/Developer/Xcode projects/Brotli/Binaries/libbrotlicommon.artifactbundle"
+    brotlienc_artifact_path="/Users/evgenij/Developer/Xcode projects/Brotli/Binaries/libbrotlienc.artifactbundle"
+    brotlidec_artifact_path="/Users/evgenij/Developer/Xcode projects/Brotli/Binaries/libbrotlidec.artifactbundle"
+
     # Target sdk path
     local sysroot="$ndk_path/toolchains/llvm/prebuilt/darwin-x86_64/sysroot"
 
@@ -139,6 +153,10 @@ build_library() {
     # Provide libpng precompiled libraries from the LibPNG artifact bundle
     export LIBPNG_CFLAGS="-I\"$libpng_artifact_path/Include\""
     export LIBPNG_LIBS="-l\"$libpng_artifact_path/$host/libpng16.a\""
+
+    # Provide brotli
+    export BROTLI_CFLAGS="-I\"$brotlicommon_artifact_path/include\" -I\"$brotlienc_artifact_path/include\" -I\"$brotlidec_artifact_path/include\""
+    export BROTLI_LIBS="-l\"$brotlicommon_artifact_path/$host/libbrotlicommon.a\" -l\"$brotlienc_artifact_path/$host/libbrotlienc.a\" -l\"$brotlidec_artifact_path/$host/libbrotlidec.a\""
 
     local arch_flags=""
     local target_os_flags="--target=$host$target_os"
@@ -170,12 +188,12 @@ build_library() {
   exit_if_error
 
   if false; then
-    sh ./../$target/configure -h -n
+    sh ./../$source_name/configure -h -n
     return
   fi
 
   TO_IMPLEMENT=no
-  sh ./../../../../$target/configure \
+  sh ./../../../../$source_name/configure \
   --host=$host \
   --prefix $prefix \
   --enable-shared=no \
@@ -185,7 +203,7 @@ build_library() {
   --with-bzip2=$enable_bzip2 \
   --with-png=yes \
   --with-harfbuzz=no \
-  --with-brotli=$TO_IMPLEMENT \
+  --with-brotli=yes \
   --with-librsvg=$TO_IMPLEMENT \
   #--with-sysroot[=DIR] \
   #--target=TARGET \
@@ -329,7 +347,7 @@ create_artifactbundle() {
   exit_if_error
 
   # Headers
-  cp -r build/Android/aarch64/install/include build/libfreetype.artifactbundle/include
+  cp -r build/Android/aarch64/install/include/freetype2 build/libfreetype.artifactbundle/include
   exit_if_error
 
   # aarch64-linux-android

@@ -1,4 +1,5 @@
 Binaries/** linguist-vendored
+Third-Party[[:space:]]Notices/** linguist-vendored
 Sources/msdfgen/core/** linguist-vendored
 Sources/msdfgen/ext/** linguist-vendored
 Sources/msdfgen/msdfgen-config.h linguist-vendored

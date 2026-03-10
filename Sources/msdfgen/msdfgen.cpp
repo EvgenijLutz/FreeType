@@ -85,7 +85,7 @@ static void parseColoring(msdfgen::Shape &shape, const char *edgeAssignment) {
 }
 
 
-SDFImage* fn_nullable generateSDFImage(FTFace* fn_nonnull face, unsigned long unicodeIndex) SWIFT_RETURNS_RETAINED {
+SDFImage* fn_nullable generateSDFImage(FTFace* fn_nonnull face, unsigned long unicodeIndex, int width, int height, bool centered) SWIFT_RETURNS_RETAINED {
     msdfgen::Shape shape;
     struct FreetypeFontGuard {
         msdfgen::FreetypeHandle *ft;
@@ -170,7 +170,6 @@ SDFImage* fn_nullable generateSDFImage(FTFace* fn_nonnull face, unsigned long un
     
     // Auto-frame
     auto autoFrame = true;
-    int width = 64, height = 64;
     bool scaleSpecified = false;
     msdfgen::Vector2 translate;
     if (autoFrame) {

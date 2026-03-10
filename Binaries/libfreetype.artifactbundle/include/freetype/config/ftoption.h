@@ -224,7 +224,7 @@ FT_BEGIN_HEADER
    *   `configure` script) and you define this macro, you also have to pass
    *   `SYSTEM_ZLIB=yes` as an argument to make.
    */
-/* #define FT_CONFIG_OPTION_SYSTEM_ZLIB */
+#define FT_CONFIG_OPTION_SYSTEM_ZLIB
 
 
   /**************************************************************************
@@ -244,7 +244,7 @@ FT_BEGIN_HEADER
    *   options set by those programs have precedence, overwriting the value
    *   here with the configured one.
    */
-/* #define FT_CONFIG_OPTION_USE_BZIP2 */
+/* #undef FT_CONFIG_OPTION_USE_BZIP2 */
 
 
   /**************************************************************************
@@ -273,7 +273,7 @@ FT_BEGIN_HEADER
    *   options set by those programs have precedence, overwriting the value
    *   here with the configured one.
    */
-/* #define FT_CONFIG_OPTION_USE_PNG */
+#define FT_CONFIG_OPTION_USE_PNG
 
 
   /**************************************************************************
@@ -290,7 +290,7 @@ FT_BEGIN_HEADER
    *   options set by those programs have precedence, overwriting the value
    *   here with the configured one.
    */
-/* #define FT_CONFIG_OPTION_USE_HARFBUZZ */
+/* #undef FT_CONFIG_OPTION_USE_HARFBUZZ */
 
 
   /**************************************************************************
@@ -315,7 +315,7 @@ FT_BEGIN_HEADER
    *   options set by those programs have precedence, overwriting the value
    *   here with the configured one.
    */
-/* #define FT_CONFIG_OPTION_USE_HARFBUZZ_DYNAMIC */
+/* #undef FT_CONFIG_OPTION_USE_HARFBUZZ_DYNAMIC */
 
 
   /**************************************************************************
@@ -331,7 +331,7 @@ FT_BEGIN_HEADER
    *   options set by those programs have precedence, overwriting the value
    *   here with the configured one.
    */
-/* #define FT_CONFIG_OPTION_USE_BROTLI */
+#define FT_CONFIG_OPTION_USE_BROTLI
 
 
   /**************************************************************************
@@ -759,7 +759,13 @@ FT_BEGIN_HEADER
   /**************************************************************************
    *
    * Define `TT_CONFIG_OPTION_BDF` if you want to include support for an
-   * embedded 'BDF~' table within SFNT-based bitmap formats.
+   * embedded 'BDF~' table within an SFNT-based `.otb` font file.  This table
+   * is an extension used by X11 to preserve BDF properties after conversion
+   * to SFNT containers.  See
+   *
+   *   https://fontforge.org/docs/techref/non-standard.html#non-standard-bdf
+   *
+   * for more details.
    */
 #define TT_CONFIG_OPTION_BDF
 
