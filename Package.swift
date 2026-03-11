@@ -79,6 +79,7 @@ let package = Package(
                 .target(name: "FreeTypeC"),
             ],
             cSettings: [
+                .enableWarning("all")
                 //.define("MSDFGEN_PUBLIC", to: " /* none */ ")
             ],
             cxxSettings: [
