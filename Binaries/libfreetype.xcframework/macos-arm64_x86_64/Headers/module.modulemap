@@ -1,5 +1,4 @@
 module libfreetype {
-    header "../libfreetype.h"
-
+    header "libfreetype.h"
     export *
 }

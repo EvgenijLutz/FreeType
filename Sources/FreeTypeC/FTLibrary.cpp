@@ -22,7 +22,7 @@ FTLibrary::~FTLibrary() {
 }
 
 
-FTLibrary* fn_nullable FTLibrary::create(CommonError* fn_nullable error) {
+FTLibrary* fn_nullable FTLibrary::create(CommonError* fn_nullable error) SWIFT_RETURNS_RETAINED {
     resetError(error);
     FT_Library library;
     auto errorCode = FT_Init_FreeType(&library);

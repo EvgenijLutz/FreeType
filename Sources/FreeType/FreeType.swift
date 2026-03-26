@@ -11,6 +11,7 @@ import libfreetype
 import msdfgen
 
 
+@available(macOS 13.3, iOS 16.4, tvOS 16.4, visionOS 1.0, watchOS 9.4, *)
 func test() {
     var library: FT_Library? = nil
     FT_Init_FreeType(&library)
@@ -20,6 +21,7 @@ func test() {
 }
 
 
+@available(macOS 13.3, iOS 16.4, tvOS 16.4, visionOS 1.0, watchOS 9.4, *)
 public func testFont(path: String, _ index: Int) throws -> SDFImage? {
     let library = try FTLibrary.create()
     let face = try library.openFace(at: path)

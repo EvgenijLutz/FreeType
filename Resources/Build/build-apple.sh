@@ -5,19 +5,35 @@
 # Define some global variables
 developer_path="/Applications/Xcode.app/Contents/Developer"
 # Your signing identity to sign the xcframework. Execute "security find-identity -v -p codesigning" and select one from the list
-signing_identity=YOUR_SIGNING_IDENTITY
+signing_identity=070BA25D98F2A17A61E3E27E31BE64C06F901016
 
 # Android NDK path
-ndk_path="/Users/evgenij/Library/Android/sdk/ndk/29.0.13846066"
+ndk_path="/Users/evgenij/Library/Android/sdk/ndk/29.0.14206865"
 
 # FreeType source code folder
-source_name="freetype-2.14.2"
+source_name="freetype-2.14.3"
 
 
 # Console output formatting
 # https://stackoverflow.com/a/2924755
 bold=$(tput bold)
 normal=$(tput sgr0)
+
+
+# Checks if the path exists
+assert_path() {
+  local path=$1
+  if [ ! -d "$path" ]; then
+    echo "$path does not exist. Check if the path correct and try again."
+    exit 1
+  fi
+}
+
+
+# Check if Xcode Developer, Android NDK and freetype folders exist
+assert_path $developer_path
+assert_path $ndk_path
+assert_path $source_name
 
 
 exit_if_error() {
@@ -241,28 +257,28 @@ build_library() {
 }
 
 
-# Build for Apple systems
-build_library MacOSX           arm64  macos11
-build_library MacOSX           x86_64 macos10.13
-build_library iPhoneOS         arm64  ios12
-build_library iPhoneSimulator  arm64  ios14-simulator
-build_library iPhoneSimulator  x86_64 ios12-simulator
-build_library AppleTVOS        arm64  tvos12
-build_library AppleTVSimulator arm64  tvos12-simulator
-build_library AppleTVSimulator x86_64 tvos12-simulator
-build_library WatchOS          arm64  watchos8
-build_library WatchSimulator   arm64  watchos8-simulator
-build_library WatchSimulator   x86_64 watchos8-simulator
-build_library XROS             arm64  xros1
-build_library XRSimulator      arm64  xros1-simulator
-build_library XRSimulator      x86_64 xros1-simulator
+# # Build for Apple systems
+# build_library MacOSX           arm64  macos11
+# build_library MacOSX           x86_64 macos10.13
+# build_library iPhoneOS         arm64  ios12
+# build_library iPhoneSimulator  arm64  ios14-simulator
+# build_library iPhoneSimulator  x86_64 ios12-simulator
+# build_library AppleTVOS        arm64  tvos12
+# build_library AppleTVSimulator arm64  tvos12-simulator
+# build_library AppleTVSimulator x86_64 tvos12-simulator
+# build_library WatchOS          arm64  watchos8
+# build_library WatchSimulator   arm64  watchos8-simulator
+# build_library WatchSimulator   x86_64 watchos8-simulator
+# build_library XROS             arm64  xros1
+# build_library XRSimulator      arm64  xros1-simulator
+# build_library XRSimulator      x86_64 xros1-simulator
 
-# Build for Android
-build_library Android aarch64 21
-build_library Android arm     21
-build_library Android i686    21
-build_library Android riscv64 35
-build_library Android x86_64  21
+# # Build for Android
+# build_library Android aarch64 21
+# build_library Android arm     21
+# build_library Android i686    21
+# build_library Android riscv64 35
+# build_library Android x86_64  21
 
 
 # Xcode Framework for all Apple platforms

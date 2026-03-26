@@ -1,4 +1,4 @@
-// swift-tools-version: 6.2
+// swift-tools-version: 6.3
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -7,10 +7,10 @@ import PackageDescription
 let package = Package(
     name: "FreeType",
     platforms: [
-        .macOS(.v14),
+        .macOS(.v11),
         .iOS(.v17),
         .tvOS(.v17),
-        .watchOS(.v10),
+        .watchOS(.v8),
         .visionOS(.v1),
         .custom("Android", versionString: "5.0")
     ],

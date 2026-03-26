@@ -7,8 +7,8 @@
 
 #pragma once
 
-#include "Common.hpp"
-#include "CommonError.hpp"
+#include <FreeTypeC/Common.hpp>
+#include <FreeTypeC/CommonError.hpp>
 
 
 class FTLibrary;

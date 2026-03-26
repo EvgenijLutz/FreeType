@@ -10,12 +10,12 @@ Carefuly compiled with love [FreeType](https://freetype.org/index.html) library 
 As a temporary feature, the FreeType package also includes [msdfgen](https://github.com/Chlumsky/msdfgen) to generate SDF textures. It will be likely moved to a separate package. 
 
 
-## Installing FreeType
+## Install
 
 Add the following dependency to your Package.swift:
 
 ```Swift
-.package(url: "https://github.com/EvgenijLutz/FreeType.git", from: "2.14.1-alpha1")
+.package(url: "https://github.com/EvgenijLutz/FreeType.git", from: "2.14.3")
 ```
 
 And you're good to go!
@@ -68,18 +68,26 @@ import FreeType
 - Support Linux
 
 
-# The journey of compiling FreeType
-Currently used `freetype 2.14.1` and `Xcode 26.2`. Download the source code [here](https://download.savannah.gnu.org/releases/freetype/) and unpack the archive. From the FreeType package, copy all files from the `Resources/Build` directory into the downloaded FreeType sources. Using terminal, navigate to the FreeType sources directory:
+# Building FreeType
+Download the source code [here](https://download.savannah.gnu.org/releases/freetype/) and unpack the archive. From the FreeType package, copy all files from the `Resources/Build` directory into the downloaded FreeType sources. Using terminal, navigate to the FreeType sources directory:
 ```bash
 cd PATH_TO_FREETYPE_SOURCES
 ```
 
-Clone somewhere the `LibPNG` to use it for building `FreeType` with `libpng` support.
+Clone `LibPNG` and `Brotli` to use it for building `FreeType` with `libpng` and `brotli` support.
 ```bash
 git clone https://github.com/EvgenijLutz/LibPNG.git
+git clone https://github.com/EvgenijLutz/Brotli.git
 ```
 
-In the `build-apple.sh` script, modify the `libpng_framework_path` (path to `LibPNG.xcframework` in the previously downloaded `LibPNG` repo), `platforms_path` (path to the `Contents/Developer/Platforms` in your `Xcode` app) and `signing_identity` (your Xcode signing identity to sign the framework you compile, see the comment for this variable in the `build-apple.sh` script for instructions) variables. And execute the script:
+In the `build-apple.sh` script, modify the following variables:
+- `libpng_artifact_path` - path to `LibPNG.xcframework` in the previously downloaded `LibPNG` repo,
+- `brotlicommon_artifact_path` - paths to `brotlicommon.xcframework` in the previously downloaded `Brotli` repo,
+- `brotlienc_artifact_path` - `brotlienc.xcframework`,
+- `brotlidec_artifact_path` - `brotlidec.xcframework`,
+- `platforms_path` - path to the `Contents/Developer/Platforms` in your `Xcode` app,
+- `signing_identity` - your Xcode signing identity to sign the framework you compile, see the comment for this variable in the `build-apple.sh` script for instructions.
+And execute the script:
 ```bash
 bash build-apple.sh
 ```

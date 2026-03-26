@@ -1,7 +1,4 @@
-#ifndef LibFreeType_h
-#define LibFreeType_h
+#pragma once
 
 #include <ft2build.h>
 #include <freetype/freetype.h>
-
-#endif // LibFreeType_h

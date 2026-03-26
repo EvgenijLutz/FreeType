@@ -35,7 +35,6 @@ std::vector<FTCharacterCode> FTFace::listCharacterCodes() {
         code = FT_Get_Next_Char(_face, code, &agindex);
         characters.push_back(static_cast<FTCharacterCode>(code));
     }
-    
     FT_Get_First_Char(_face, &agindex);
     
     return characters;
