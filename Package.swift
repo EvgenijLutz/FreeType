@@ -7,9 +7,9 @@ import PackageDescription
 let package = Package(
     name: "FreeType",
     platforms: [
-        .macOS(.v11),
-        .iOS(.v17),
-        .tvOS(.v17),
+        .macOS(.v10_13),
+        .iOS(.v12),
+        .tvOS(.v12),
         .watchOS(.v8),
         .visionOS(.v1),
         .custom("Android", versionString: "5.0")
@@ -33,10 +33,10 @@ let package = Package(
         ),
     ],
     dependencies: {
-#if true
+#if false
         [
             // freetype uses libpbg to load some fonts that contain png glyphs
-            .package(url: "https://github.com/EvgenijLutz/LibPNG.git", from: .init(1, 6, 50)),
+            .package(url: "https://github.com/EvgenijLutz/LibPNG.git", from: .init(1, 6, 58)),
             .package(url: "https://github.com/EvgenijLutz/Brotli.git", from: .init(1, 2, 0)),
         ]
 #else

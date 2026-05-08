@@ -6,9 +6,12 @@
 //
 
 import Foundation
-import libfreetype
 @_exported import FreeTypeC
 import msdfgen
+
+
+// Swift/C++ interoperability is available starting on these systems:
+// @available(macOS 13.3, iOS 16.4, tvOS 16.4, visionOS 1.0, watchOS 9.4, *)
 
 
 @available(macOS 13.3, iOS 16.4, tvOS 16.4, visionOS 1.0, watchOS 9.4, *)

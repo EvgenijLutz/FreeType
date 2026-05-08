@@ -5,7 +5,7 @@
 //  Created by Evgenij Lutz on 08.09.25.
 //
 
-#include <libfreetype.h>
+#include <FreeTypeC/libfreetype.h>
 #include <FreeTypeC/CommonError.hpp>
 
 

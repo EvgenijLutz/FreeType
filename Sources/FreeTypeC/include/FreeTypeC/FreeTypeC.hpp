@@ -9,8 +9,7 @@
 
 #if defined __cplusplus
 
-//#include <libfreetype.h>
-
+#include <FreeTypeC/libfreetype.h>
 #include <FreeTypeC/Common.hpp>
 #include <FreeTypeC/CommonError.hpp>
 #include <FreeTypeC/FTLibrary.hpp>

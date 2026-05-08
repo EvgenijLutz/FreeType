@@ -6,7 +6,7 @@
 //
 
 #include <FreeTypeC/FreeTypeC.hpp>
-#include <libfreetype.h>
+#include <FreeTypeC/libfreetype.h>
 
 //void testFreeTypeC(void) {
 //    FT_Int someInt = 0;

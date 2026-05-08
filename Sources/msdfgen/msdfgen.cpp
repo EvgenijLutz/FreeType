@@ -5,7 +5,7 @@
 //  Created by Evgenij Lutz on 14.11.25.
 //
 
-#include <libfreetype.h>
+#include <FreeTypeC/libfreetype.h>
 #include <msdfgen/msdfgen.hpp>
 #include "msdfgen.h"
 #include "msdfgen-ext.h"

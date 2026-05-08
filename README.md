@@ -26,29 +26,27 @@ And you're good to go!
 There are several products in the `FreeType`:
 
 
-### libfreetype - original freetype interface
+### libfreetype.xcframework - original freetype interface
 
-Precompiled as an XCFramework `FreeType` library without any extensions. After adding the package to your project, you can import the library in `Swift`:
-```Swift
-import libfreetype
-```
-
-or in `C`/`C++`:
+Precompiled as an XCFramework `FreeType` library without any extensions. After adding the package to your project, you can import the library in in `C`/`C++`:
 ```C
-#include <libfreetype.h>
+#include <ft2build.h>
+#include <freetype/freetype.h>
 ```
+
+In the previous releases, libfreetype.xcframework contained an umbrella header and a clang module map file to directly expose the original FreeType APIs to Swift. After Xcode 26.3 release, module map discovery was broken (or became less tolerant to arbitrary modulemap placement in the XCFramework bundle) for static XCFrameworks with custom module maps. Since then, the Swift compiler could not generate Swift interface and thus, you cannot import the module directly. We will probably give up on embedding clang modulemaps into static XCFrameworks and provide a separate target that exposes its interface instead.
 
 
 ### FreeTypeC - best for C/C++
 
-A `C++` library that extends `FreeType`'s interface, links the `FreeType` target, empty at the moment. You can import the library in `Swift`:
-```Swift
-import FreeTypeC
-```
-
-or in `C`/`C++`:
+A `C++` library that extends `FreeType`'s interface, links the `FreeType` target, empty at the moment. You can import the library in `C`/`C++`:
 ```C
 #include <FreeTypeC.h>
+```
+
+or in `Swift`:
+```Swift
+import FreeTypeC
 ```
 
 
@@ -63,7 +61,7 @@ import FreeType
 
 ## TODOs
 
-- Expose Android artifact bundle. The library is successfully compiled, but not yet tested.
+- Expose Android artifact bundle. The library is successfully compiled, but not yet tested on a real device.
 - Support Windows
 - Support Linux
 

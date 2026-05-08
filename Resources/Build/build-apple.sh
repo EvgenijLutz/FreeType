@@ -2,6 +2,8 @@
 
 # FreeType
 
+source common.sh
+
 # Define some global variables
 developer_path="/Applications/Xcode.app/Contents/Developer"
 # Your signing identity to sign the xcframework. Execute "security find-identity -v -p codesigning" and select one from the list
@@ -14,35 +16,10 @@ ndk_path="/Users/evgenij/Library/Android/sdk/ndk/29.0.14206865"
 source_name="freetype-2.14.3"
 
 
-# Console output formatting
-# https://stackoverflow.com/a/2924755
-bold=$(tput bold)
-normal=$(tput sgr0)
-
-
-# Checks if the path exists
-assert_path() {
-  local path=$1
-  if [ ! -d "$path" ]; then
-    echo "$path does not exist. Check if the path correct and try again."
-    exit 1
-  fi
-}
-
-
 # Check if Xcode Developer, Android NDK and freetype folders exist
 assert_path $developer_path
 assert_path $ndk_path
 assert_path $source_name
-
-
-exit_if_error() {
-  local result=$?
-  if [ $result -ne 0 ] ; then
-     echo "Received an exit code $result, aborting"
-     exit 1
-  fi
-}
 
 
 build_library() {
@@ -244,34 +221,53 @@ build_library() {
   rm -rf build/$platform/$arch/tmp
 
   # Copy custom umbrella header
-  cp Contents/libfreetype.h build/$platform/$arch/install/include/freetype2/libfreetype.h
-  exit_if_error
+  # cp Contents/libfreetype.h build/$platform/$arch/install/include/freetype2/libfreetype.h
+  # exit_if_error
 
-  # About modules
-  # https://clang.llvm.org/docs/Modules.html
-  # Without module.modulemap libfreetype is not exposed to Swift
-  # Copy the module map into the directory with installed header files
-  mkdir -p build/$platform/$arch/install/include/freetype2/libfreetype-Module
-  cp Contents/module.modulemap build/$platform/$arch/install/include/freetype2/libfreetype-Module/module.modulemap
+  
+  # Create a framework folder
+  # mkdir -p build/$platform/$arch/install/libfreetype.framework
+  # mkdir -p build/$platform/$arch/install/libfreetype.framework/Headers
+  # mkdir -p build/$platform/$arch/install/libfreetype.framework/Modules
+  # # Copy compiled binary
+  # cp build/$platform/$arch/install/lib/libfreetype.a build/$platform/$arch/install/libfreetype.framework/libfreetype.a
+  # # Copy headers
+  # cp -r build/$platform/$arch/install/include build/$platform/$arch/install/libfreetype.framework/Headers
+  # # Copy the modulemap file
+  # cp Contents/module.modulemap build/$platform/$arch/install/libfreetype.framework/Modules/module.modulemap
+  # # Copy PrivacyInfo.xcprivacy
+  # cp Contents/PrivacyInfo.xcprivacy build/$platform/$arch/install/libfreetype.framework/PrivacyInfo.xcprivacy
+  # # Copy Info.plist
+  # cp Contents/Info.plist build/$platform/$arch/install/libfreetype.framework/Info.plist
+
+
+  # Doesn't fucking work anymore, the latest Xcode broke the modulemap discovery
+  #mkdir -p build/$platform/$arch/install/include/freetype2/libfreetype-Module
+  #cp Contents/module.modulemap build/$platform/$arch/install/include/freetype2/libfreetype-Module/module.modulemap
+  #mkdir -p build/$platform/$arch/install/include/freetype2/Modules/libfreetype
+  #cp Contents/module.modulemap build/$platform/$arch/install/include/freetype2/Modules/libfreetype/module.modulemap
+  #cp Contents/module.modulemap build/$platform/$arch/install/include/freetype2/libfreetype.modulemap
+  #cp Contents/module.modulemap build/$platform/$arch/install/include/freetype2/module.modulemap
+  
   exit_if_error
 }
 
 
-# # Build for Apple systems
-# build_library MacOSX           arm64  macos11
-# build_library MacOSX           x86_64 macos10.13
-# build_library iPhoneOS         arm64  ios12
-# build_library iPhoneSimulator  arm64  ios14-simulator
-# build_library iPhoneSimulator  x86_64 ios12-simulator
-# build_library AppleTVOS        arm64  tvos12
-# build_library AppleTVSimulator arm64  tvos12-simulator
-# build_library AppleTVSimulator x86_64 tvos12-simulator
-# build_library WatchOS          arm64  watchos8
-# build_library WatchSimulator   arm64  watchos8-simulator
-# build_library WatchSimulator   x86_64 watchos8-simulator
-# build_library XROS             arm64  xros1
-# build_library XRSimulator      arm64  xros1-simulator
-# build_library XRSimulator      x86_64 xros1-simulator
+# Build for Apple systems
+build_library MacOSX           arm64  macos11
+build_library MacOSX           x86_64 macos10.13
+build_library iPhoneOS         arm64  ios12
+build_library iPhoneSimulator  arm64  ios14-simulator
+build_library iPhoneSimulator  x86_64 ios12-simulator
+build_library AppleTVOS        arm64  tvos12
+build_library AppleTVSimulator arm64  tvos12-simulator
+build_library AppleTVSimulator x86_64 tvos12-simulator
+build_library WatchOS          arm64  watchos8
+build_library WatchSimulator   arm64  watchos8-simulator
+build_library WatchSimulator   x86_64 watchos8-simulator
+build_library XROS             arm64  xros1
+build_library XRSimulator      arm64  xros1-simulator
+build_library XRSimulator      x86_64 xros1-simulator
 
 # # Build for Android
 # build_library Android aarch64 21
@@ -396,7 +392,7 @@ create_artifactbundle() {
   cp build/Android/x86_64/install/lib/libfreetype.a build/libfreetype.artifactbundle/x86_64-linux-android/libfreetype.a
   exit_if_error
 }
-create_artifactbundle
+#create_artifactbundle
 
 
 
