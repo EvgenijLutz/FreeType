@@ -1,5 +1,7 @@
 # FreeType
 
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FEvgenijLutz%2FFreeType%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/EvgenijLutz/FreeType) [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FEvgenijLutz%2FFreeType%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/EvgenijLutz/FreeType) [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)]
+
 Carefuly compiled with love [FreeType](https://freetype.org/index.html) library as an Xcode Framework and distributed as a Swift package so you can conviniently integrate it in your Xcode project.
 
 - Use Swift, C or C++ to access the FreeType API
@@ -37,11 +39,11 @@ Precompiled as an XCFramework `FreeType` library without any extensions. After a
 In the previous releases, libfreetype.xcframework contained an umbrella header and a clang module map file to directly expose the original FreeType APIs to Swift. After Xcode 26.3 release, module map discovery was broken (or became less tolerant to arbitrary modulemap placement in the XCFramework bundle) for static XCFrameworks with custom module maps. Since then, the Swift compiler could not generate Swift interface and thus, you cannot import the module directly. We will probably give up on embedding clang modulemaps into static XCFrameworks and provide a separate target that exposes its interface instead.
 
 
-### FreeTypeC - best for C/C++
+### FreeTypeC - best for C++
 
-A `C++` library that extends `FreeType`'s interface, links the `FreeType` target, empty at the moment. You can import the library in `C`/`C++`:
-```C
-#include <FreeTypeC.h>
+A `C++` library that extends `FreeType`'s interface, links the `FreeType` target, empty at the moment. You can import the library in `C++`:
+```cpp
+#include <FreeTypeC/FreeTypeC.h>
 ```
 
 or in `Swift`:

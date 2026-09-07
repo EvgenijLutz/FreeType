@@ -172,6 +172,7 @@ FTGlyphCollection* fn_nullable FTLibrary::exportGlyphs(const char* fn_nonnull pa
         if (FT_Set_Pixel_Sizes(face, static_cast<FT_UInt>(width), static_cast<FT_UInt>(height))) {
             // Failed to set size
             setFTError(error, -1);
+            delete collection;
             return nullptr;
         }
 #endif
@@ -180,6 +181,7 @@ FTGlyphCollection* fn_nullable FTLibrary::exportGlyphs(const char* fn_nonnull pa
         if (FT_Load_Char(face, code, FT_LOAD_RENDER)) {
             // Failed to render the character
             setFTError(error, -1);
+            delete collection;
             return nullptr;
         }
         
@@ -187,12 +189,14 @@ FTGlyphCollection* fn_nullable FTLibrary::exportGlyphs(const char* fn_nonnull pa
         if (bitmap.pixel_mode != FT_PIXEL_MODE_GRAY) {
             // Unsupported pixel mode
             setFTError(error, -1);
+            delete collection;
             return nullptr;
         }
         
         if (bitmap.width < 1 || bitmap.rows < 1) {
             // No glyph for symbol
             setFTError(error, -1);
+            delete collection;
             return nullptr;
         }
         

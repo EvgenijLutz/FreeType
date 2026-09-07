@@ -20,6 +20,10 @@ let package = Package(
             targets: ["libfreetype"]
         ),
         .library(
+            name: "libfreetype_c",
+            targets: ["libfreetype_c"]
+        ),
+        .library(
             name: "msdfgen",
             targets: ["msdfgen"]
         ),
@@ -36,8 +40,8 @@ let package = Package(
 #if true
         [
             // freetype uses libpbg to load some fonts that contain png glyphs
-            .package(url: "https://github.com/EvgenijLutz/LibPNG.git", from: .init(1, 6, 58)),
-            .package(url: "https://github.com/EvgenijLutz/Brotli.git", from: .init(1, 2, 0)),
+            .package(url: "https://github.com/EvgenijLutz/LibPNG.git", from: "1.6.58"),
+            .package(url: "https://github.com/EvgenijLutz/Brotli.git", from: "1.2.0"),
         ]
 #else
         [
@@ -60,6 +64,12 @@ let package = Package(
             )
 #endif
         }(),
+        .target(
+            name: "libfreetype_c",
+            dependencies: [
+                .target(name: "libfreetype"),
+            ]
+        ),
         .target(
             name: "FreeTypeC",
             dependencies: [
@@ -90,6 +100,7 @@ let package = Package(
         .target(
             name: "FreeType",
             dependencies: [
+                .target(name: "libfreetype_c"),
                 .target(name: "FreeTypeC"),
                 .target(name: "msdfgen")
             ],
