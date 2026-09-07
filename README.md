@@ -1,6 +1,6 @@
 # FreeType
 
-[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FEvgenijLutz%2FFreeType%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/EvgenijLutz/FreeType) [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FEvgenijLutz%2FFreeType%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/EvgenijLutz/FreeType) [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)]
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FEvgenijLutz%2FFreeType%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/EvgenijLutz/FreeType) [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FEvgenijLutz%2FFreeType%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/EvgenijLutz/FreeType) [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 Carefuly compiled with love [FreeType](https://freetype.org/index.html) library as an Xcode Framework and distributed as a Swift package so you can conviniently integrate it in your Xcode project.
 
