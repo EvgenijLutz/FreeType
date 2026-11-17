@@ -21,6 +21,7 @@ class FreetypeHandle {
     friend FontHandle *loadFont(FreetypeHandle *library, const char *filename);
     friend FontHandle *loadFontData(FreetypeHandle *library, const byte *data, int length);
 #ifndef MSDFGEN_DISABLE_VARIABLE_FONTS
+    friend bool setFontVariationAxis(FreetypeHandle *library, FontHandle *font, FontVariationAxis::Tag tag, double coordinate);
     friend bool setFontVariationAxis(FreetypeHandle *library, FontHandle *font, const char *name, double coordinate);
     friend bool listFontVariationAxes(std::vector<FontVariationAxis> &axes, FreetypeHandle *library, FontHandle *font);
 #endif
@@ -43,6 +44,7 @@ class FontHandle {
     friend bool getKerning(double &output, FontHandle *font, GlyphIndex glyphIndex0, GlyphIndex glyphIndex1, FontCoordinateScaling coordinateScaling);
     friend bool getKerning(double &output, FontHandle *font, unicode_t unicode0, unicode_t unicode1, FontCoordinateScaling coordinateScaling);
 #ifndef MSDFGEN_DISABLE_VARIABLE_FONTS
+    friend bool setFontVariationAxis(FreetypeHandle *library, FontHandle *font, FontVariationAxis::Tag tag, double coordinate);
     friend bool setFontVariationAxis(FreetypeHandle *library, FontHandle *font, const char *name, double coordinate);
     friend bool listFontVariationAxes(std::vector<FontVariationAxis> &axes, FreetypeHandle *library, FontHandle *font);
 #endif
@@ -119,6 +121,22 @@ unsigned GlyphIndex::getIndex() const {
     return index;
 }
 
+FontVariationAxis::Tag::Tag() : characters() { }
+
+FontVariationAxis::Tag::Tag(unsigned long freetypeTagValue) {
+    characters[0] = (char) (freetypeTagValue>>24);
+    characters[1] = (char) (freetypeTagValue>>16);
+    characters[2] = (char) (freetypeTagValue>>8);
+    characters[3] = (char) freetypeTagValue;
+}
+
+FontVariationAxis::Tag::Tag(const char *stringValue) : characters() {
+    if (stringValue) {
+        for (int i = 0; i < 4 && stringValue[i]; ++i)
+            characters[i] = stringValue[i];
+    }
+}
+
 FreetypeHandle *initializeFreetype() {
     FreetypeHandle *handle = new FreetypeHandle;
     FT_Error error = FT_Init_FreeType(&handle->library);
@@ -143,7 +161,7 @@ FontHandle *adoptFreetypeFont(FT_Face ftFace) {
 
 FT_Error readFreetypeOutline(Shape &output, FT_Outline *outline, double scale) {
     output.contours.clear();
-    output.inverseYAxis = false;
+    output.setYAxisOrientation(Y_UPWARD);
     FtContext context = { };
     context.scale = scale;
     context.shape = &output;
@@ -266,6 +284,32 @@ bool getKerning(double &output, FontHandle *font, unicode_t unicode0, unicode_t 
 
 #ifndef MSDFGEN_DISABLE_VARIABLE_FONTS
 
+bool setFontVariationAxis(FreetypeHandle *library, FontHandle *font, FontVariationAxis::Tag tag, double coordinate) {
+    bool success = false;
+    if (font->face->face_flags&FT_FACE_FLAG_MULTIPLE_MASTERS) {
+        FT_MM_Var *master = NULL;
+        if (FT_Get_MM_Var(font->face, &master))
+            return false;
+        if (master && master->num_axis) {
+            std::vector<FT_Fixed> coords(master->num_axis);
+            if (!FT_Get_Var_Design_Coordinates(font->face, FT_UInt(coords.size()), &coords[0])) {
+                FT_ULong ftTag = FT_MAKE_TAG(tag.characters[0], tag.characters[1], tag.characters[2], tag.characters[3]);
+                for (FT_UInt i = 0; i < master->num_axis; ++i) {
+                    if (master->axis[i].tag == ftTag) {
+                        coords[i] = DOUBLE_TO_F16DOT16(coordinate);
+                        success = true;
+                        break;
+                    }
+                }
+            }
+            if (FT_Set_Var_Design_Coordinates(font->face, FT_UInt(coords.size()), &coords[0]))
+                success = false;
+        }
+        FT_Done_MM_Var(library->library, master);
+    }
+    return success;
+}
+
 bool setFontVariationAxis(FreetypeHandle *library, FontHandle *font, const char *name, double coordinate) {
     bool success = false;
     if (font->face->face_flags&FT_FACE_FLAG_MULTIPLE_MASTERS) {
@@ -299,6 +343,7 @@ bool listFontVariationAxes(std::vector<FontVariationAxis> &axes, FreetypeHandle 
         axes.resize(master->num_axis);
         for (FT_UInt i = 0; i < master->num_axis; ++i) {
             FontVariationAxis &axis = axes[i];
+            axis.tag = FontVariationAxis::Tag(master->axis[i].tag);
             axis.name = master->axis[i].name;
             axis.minValue = F16DOT16_TO_DOUBLE(master->axis[i].minimum);
             axis.maxValue = F16DOT16_TO_DOUBLE(master->axis[i].maximum);

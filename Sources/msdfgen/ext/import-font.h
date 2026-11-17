@@ -37,6 +37,13 @@ struct FontMetrics {
 
 /// A structure to model a given axis of a variable font.
 struct FontVariationAxis {
+    /// The 4-letter tag of the variation axis.
+    struct Tag {
+        char characters[4];
+        Tag();
+        explicit Tag(unsigned long freetypeTagValue);
+        explicit Tag(const char *stringValue);
+    } tag;
     /// The name of the variation axis.
     const char *name;
     /// The axis's minimum coordinate value.
@@ -95,6 +102,7 @@ bool getKerning(double &output, FontHandle *font, unicode_t unicode0, unicode_t 
 
 #ifndef MSDFGEN_DISABLE_VARIABLE_FONTS
 /// Sets a single variation axis of a variable font.
+bool setFontVariationAxis(FreetypeHandle *library, FontHandle *font, FontVariationAxis::Tag tag, double coordinate);
 bool setFontVariationAxis(FreetypeHandle *library, FontHandle *font, const char *name, double coordinate);
 /// Lists names and ranges of variation axes of a variable font.
 bool listFontVariationAxes(std::vector<FontVariationAxis> &axes, FreetypeHandle *library, FontHandle *font);
