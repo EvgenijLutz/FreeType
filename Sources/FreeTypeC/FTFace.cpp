@@ -5,6 +5,7 @@
 //  Created by Evgenij Lutz on 08.09.25.
 //
 
+#define _LIBCPP_REMOVE_TRANSITIVE_INCLUDES
 #include <freetype/freetype.h>
 #include <FreeTypeC/FTFace.hpp>
 

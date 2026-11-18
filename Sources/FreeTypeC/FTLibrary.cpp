@@ -5,10 +5,12 @@
 //  Created by Evgenij Lutz on 08.09.25.
 //
 
+#define _LIBCPP_REMOVE_TRANSITIVE_INCLUDES
 #include <FreeTypeC/libfreetype.h>
 #include <FreeTypeC/FTLibrary.hpp>
 #include <FreeTypeC/FTFace.hpp>
 #include <FreeTypeC/FTGlyphCollection.hpp>
+#include <cmath>
 
 
 FTLibrary::FTLibrary(FT_Library_impl fn_nonnull library):
@@ -95,7 +97,7 @@ FTFace* fn_nullable FTLibrary::openFace(const char* fn_nonnull path, long faceIn
 }
 
 
-FTGlyphCollection* fn_nullable FTLibrary::exportGlyphs(const char* fn_nonnull path, long faceIndex, long faceInstanceIndex, long width, long height, CommonError* fn_nullable error, FTProgressCallback fn_nullable progressCallback) {
+FTGlyphCollection* fn_nullable FTLibrary::exportGlyphs(const char* fn_nonnull path, long faceIndex, long faceInstanceIndex, long width, long height, CommonError* fn_nullable error, [[maybe_unused]] FTProgressCallback fn_nullable progressCallback) {
     // Success by default
     resetError(error);
     
@@ -120,7 +122,7 @@ FTGlyphCollection* fn_nullable FTLibrary::exportGlyphs(const char* fn_nonnull pa
         }
         
         static FT_Long to_26_6(float value) {
-            auto x = static_cast<FT_Long>(floorf(value));
+            auto x = static_cast<FT_Long>(std::floorf(value));
             auto y = static_cast<FT_Long>(64.0f * (value - static_cast<float>(x)));
             return (x << 6) | y;
         }

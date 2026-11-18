@@ -7,11 +7,7 @@
 
 #pragma once
 
-#include <stdio.h>
-#include <atomic>
-#include <span>
-#include <vector>
-#include <string>
+#include <ptrcheck.h>
 
 #if __has_include(<swift/bridging>)
 #  include <swift/bridging>
@@ -38,11 +34,11 @@
 
 
 #ifndef fn_nullable
-#define fn_nullable __nullable
+#define fn_nullable _Nullable
 #endif
 
 #ifndef fn_nonnull
-#define fn_nonnull __nonnull
+#define fn_nonnull _Nonnull
 #endif
 
 #ifndef fn_packed
@@ -50,15 +46,19 @@
 #endif
 
 #ifndef fn_noescape
-#define fn_noescape _LIBCPP_NOESCAPE
+#define fn_noescape __attribute__((noescape))
 #endif
 
 #ifndef fn_counted_by
 #define fn_counted_by(__member__) __counted_by(__member__)
 #endif
 
+#ifndef fn_sized_by
+#define fn_sized_by(__member__) __sized_by(__member__)
+#endif
+
 #ifndef fn_lifetimebound
-#define fn_lifetimebound _LIBCPP_LIFETIMEBOUND
+#define fn_lifetimebound __attribute__((lifetimebound))
 #endif
 
 

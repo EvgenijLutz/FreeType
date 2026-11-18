@@ -11,6 +11,7 @@
 
 #include <FreeTypeC/FreeTypeC.hpp>
 
+
 class SDFImage final {
 private:
     std::atomic<size_t> _referenceCounter;
@@ -28,9 +29,9 @@ private:
 public:
     static SDFImage* fn_nonnull create(const float* fn_nonnull contents, long numChannels, long width, long height) SWIFT_RETURNS_RETAINED;
     const char* fn_nonnull getContents() SWIFT_COMPUTED_PROPERTY { return _contents; }
-    const long getNumChannels() SWIFT_COMPUTED_PROPERTY { return _numChannels; }
-    const long getWidth() SWIFT_COMPUTED_PROPERTY { return _width; }
-    const long getHeight() SWIFT_COMPUTED_PROPERTY { return _height; }
+    long getNumChannels() SWIFT_COMPUTED_PROPERTY { return _numChannels; }
+    long getWidth() SWIFT_COMPUTED_PROPERTY { return _width; }
+    long getHeight() SWIFT_COMPUTED_PROPERTY { return _height; }
     
 }
 FN_SWIFT_INTERFACE(SDFImage)

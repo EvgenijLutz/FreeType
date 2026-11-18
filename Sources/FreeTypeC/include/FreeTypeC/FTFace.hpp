@@ -9,6 +9,8 @@
 
 #include <FreeTypeC/Common.hpp>
 #include <FreeTypeC/CommonError.hpp>
+#include <atomic>
+#include <vector>
 
 
 class FTLibrary;

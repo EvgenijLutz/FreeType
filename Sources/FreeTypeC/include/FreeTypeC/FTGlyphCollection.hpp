@@ -8,6 +8,8 @@
 #pragma once
 
 #include "Common.hpp"
+#include <atomic>
+#include <vector>
 
 
 class FTLibrary;

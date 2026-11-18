@@ -7,30 +7,35 @@ import PackageDescription
 let package = Package(
     name: "FreeType",
     platforms: [
-        .macOS(.v12),
-        .iOS(.v15),
-        .tvOS(.v15),
-        .watchOS(.v9),
-        .visionOS(.v1),
+        .macOS(.v26),
+        .iOS(.v26),
+        .tvOS(.v26),
+        .watchOS(.v26),
+        .visionOS(.v26),
         .custom("Android", versionString: "5.0")
     ],
     products: [
+        // Original FreeType
         .library(
             name: "libfreetype",
             targets: ["libfreetype"]
         ),
+        // Original FreeType available for Swift
         .library(
             name: "libfreetype_c",
             targets: ["libfreetype_c"]
         ),
+        // Generate SDF fonts
         .library(
             name: "msdfgen",
             targets: ["msdfgen"]
         ),
+        // C++ helper interfaces for FreeType
         .library(
             name: "FreeTypeC",
             targets: ["FreeTypeC"]
         ),
+        // Swift helper interfaces for FreeType
         .library(
             name: "FreeType",
             targets: ["FreeType"]
@@ -68,6 +73,10 @@ let package = Package(
             name: "libfreetype_c",
             dependencies: [
                 .target(name: "libfreetype"),
+            ],
+            linkerSettings: [
+                // Link Apple's [hvf](https://developer.apple.com/documentation/hvf) framework.
+                .linkedLibrary("hvf", .when(platforms: [.macOS, .iOS, .tvOS, .watchOS, .visionOS]))
             ]
         ),
         .target(
@@ -79,8 +88,23 @@ let package = Package(
                 .product(name: "libbrotlicommon", package: "Brotli"),
                 .product(name: "libbrotlidec", package: "Brotli"),
             ],
+            cSettings: [
+                .enableWarning("all"),
+                .enableWarning("extra"),
+                .enableWarning("implicit-fallthrough"),
+                .enableWarning("int-conversion"),
+                .enableWarning("pointer-to-int-cast")
+            ],
             cxxSettings: [
-                .enableWarning("all")
+                .enableWarning("all"),
+                .enableWarning("extra"),
+                .enableWarning("implicit-fallthrough"),
+                .enableWarning("int-conversion"),
+                .enableWarning("pointer-to-int-cast")
+            ],
+            linkerSettings: [
+                // Link Apple's [hvf](https://developer.apple.com/documentation/hvf) framework.
+                .linkedLibrary("hvf", .when(platforms: [.macOS, .iOS, .tvOS, .watchOS, .visionOS]))
             ]
         ),
         .target(
@@ -89,12 +113,20 @@ let package = Package(
                 .target(name: "FreeTypeC"),
             ],
             cSettings: [
-                .enableWarning("all")
+                .enableWarning("all"),
+                //.enableWarning("extra"),
+                //.enableWarning("implicit-fallthrough"),
+                //.enableWarning("int-conversion"),
+                //.enableWarning("pointer-to-int-cast"),
                 //.define("MSDFGEN_PUBLIC", to: " /* none */ ")
             ],
             cxxSettings: [
                 .enableWarning("all"),
-                //.define("MSDFGEN_PUBLIC", to: " /* wtf why are you not working */ ")
+                //.enableWarning("extra"),
+                //.enableWarning("implicit-fallthrough"),
+                //.enableWarning("int-conversion"),
+                //.enableWarning("pointer-to-int-cast"),
+                //.define("MSDFGEN_PUBLIC", to: " /* none */ ")
             ]
         ),
         .target(
